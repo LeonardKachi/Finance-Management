@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>My Finances | Imperium Pecuniae</title>
 <style>
-:root{--bg:#f5f5f7;--sf:#fff;--sf2:#f0f0f3;--tx:#1d1d1f;--mu:#6e6e73;--dv:#d2d2d7;--ac:#0b5cad;--acs:rgba(11,92,173,.09);--gd:#1d7a3c;--bd:#c4352a;--sh:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05);
+:root{--bg:#f5f5f7;--sf:#fff;--sf2:#f0f0f3;--tx:#1d1d1f;--mu:#6e6e73;--dv:#d2d2d7;--ac:#0b5cad;--acs:rgba(11,92,173,.09);--gd:#1d7a3c;--gds:rgba(29,122,60,.1);--wn:#b9650a;--wns:rgba(185,101,10,.1);--bd:#c4352a;--bds:rgba(196,53,42,.1);--sh:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05);
 --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;--serif:Georgia,"Times New Roman",serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b0c0f;--sf:#1a1c21;--sf2:#262930;--tx:#f3f3f5;--mu:#9a9ca4;--dv:#383b43;--ac:#5fb0ff;--acs:rgba(95,176,255,.14);--gd:#4cd37b;--bd:#ff7a6e;color-scheme:dark}}
-:root[data-theme=dark]{--bg:#0b0c0f;--sf:#1a1c21;--sf2:#262930;--tx:#f3f3f5;--mu:#9a9ca4;--dv:#383b43;--ac:#5fb0ff;--acs:rgba(95,176,255,.14);--gd:#4cd37b;--bd:#ff7a6e;color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b0c0f;--sf:#1a1c21;--sf2:#262930;--tx:#f3f3f5;--mu:#9a9ca4;--dv:#383b43;--ac:#5fb0ff;--acs:rgba(95,176,255,.14);--gd:#4cd37b;--gds:rgba(76,211,123,.13);--wn:#ffa63d;--wns:rgba(255,166,61,.13);--bd:#ff7a6e;--bds:rgba(255,122,110,.13);color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0b0c0f;--sf:#1a1c21;--sf2:#262930;--tx:#f3f3f5;--mu:#9a9ca4;--dv:#383b43;--ac:#5fb0ff;--acs:rgba(95,176,255,.14);--gd:#4cd37b;--gds:rgba(76,211,123,.13);--wn:#ffa63d;--wns:rgba(255,166,61,.13);--bd:#ff7a6e;--bds:rgba(255,122,110,.13);color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -23,9 +23,8 @@ nav button.on{background:var(--acs);color:var(--ac)}
 select,input,textarea{font:16px var(--sans);color:var(--tx);background:var(--sf2);border:1px solid var(--dv);border-radius:10px;padding:9px 11px;min-width:0}
 input:focus,select:focus,textarea:focus{border-color:var(--ac);outline:0;box-shadow:0 0 0 3px var(--acs)}
 h1{font:400 clamp(1.8rem,5vw,2.6rem)/1.1 var(--serif);margin:34px 0 6px}
-h2{font:400 1.5rem/1.2 var(--serif);margin:0 0 6px}
 h3{font-size:16px;margin:0 0 10px}
-.sub{color:var(--mu);font-size:14.5px;margin:0 0 18px;max-width:64ch}
+.sub{color:var(--mu);font-size:14.5px;margin:0 0 18px;max-width:66ch}
 .pg{display:none;padding-bottom:30px}.pg.on{display:block}
 .cd{background:var(--sf);border-radius:16px;box-shadow:var(--sh);padding:20px;margin-bottom:14px}
 .rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
@@ -34,155 +33,194 @@ h3{font-size:16px;margin:0 0 10px}
 .pos{color:var(--gd)}.neg{color:var(--bd)}
 .add{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .add input,.add select{flex:1 1 120px}
-.add input[type=number]{flex:1 1 90px}
 .b{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:9px 16px;font:600 14px var(--sans);cursor:pointer}
-.b.g{background:var(--sf2);color:var(--tx)}
+.b.g{background:var(--sf2);color:var(--tx)}.b:disabled{opacity:.6}
 .x{background:none;border:0;color:var(--mu);cursor:pointer;font-size:18px;line-height:1;padding:2px 8px}
 .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--dv);font-size:14.5px}
-.row:last-child{border:0}
-.row .a{flex:1;min-width:0}.row small{display:block;color:var(--mu);font-size:12.5px}
-.row .v{font-weight:600;white-space:nowrap}
+.row:last-child{border:0}.row .a{flex:1;min-width:0}.row small{display:block;color:var(--mu);font-size:12.5px}.row .v{font-weight:600;white-space:nowrap}
 .empty{color:var(--mu);font-size:14px;padding:6px 0}
-.bar{height:8px;background:var(--sf2);border-radius:9px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--ac)}
+.bar,.meter{height:8px;background:var(--sf2);border-radius:9px;overflow:hidden;margin-top:6px}.bar i,.meter i{display:block;height:100%;background:var(--ac)}
+.meter{height:14px}.meter i{background:linear-gradient(90deg,var(--ac),var(--gd))}
 .cat{display:flex;justify-content:space-between;font-size:14px;margin-top:10px}
 .note{background:var(--acs);color:var(--ac);border-radius:11px;padding:10px 14px;font-size:13px;margin-top:12px}
 .fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .fr label{font-size:12.5px;font-weight:600;color:var(--mu);display:block;margin-bottom:4px}.fr input{width:100%}
+.hint{font-size:12px;color:var(--mu);margin-top:3px}
 details{background:var(--sf2);border-radius:11px;padding:10px 14px;margin-bottom:7px}
 summary{font-weight:600;font-size:14.5px;cursor:pointer}details p{margin:7px 0 0;font-size:13.5px;color:var(--mu)}details b{color:var(--tx)}
 textarea{width:100%;height:90px;font-size:12px}
+.seg{display:inline-flex;background:var(--sf2);border-radius:10px;padding:3px;margin-bottom:14px}
+.seg button{border:0;background:none;color:var(--mu);font:600 14px var(--sans);padding:7px 15px;border-radius:8px;cursor:pointer}.seg button.on{background:var(--sf);color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.t-l{background:var(--gds);color:var(--gd)}.t-m{background:var(--wns);color:var(--wn)}.t-h{background:var(--bds);color:var(--bd)}.t-i{background:var(--acs);color:var(--ac)}
 .stack{display:grid;gap:8px}.lay{display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--sf2);border-radius:13px;padding:14px 16px}.lay .n{font:700 22px var(--serif);color:var(--ac)}.lay b{display:block}.lay p{margin:4px 0 0;font-size:13.5px;color:var(--mu)}
-table.t{width:100%;border-collapse:collapse;font-size:14px}table.t th,table.t td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--dv)}table.t th{font-size:12.5px;color:var(--mu)}.src{font-size:12px;color:var(--mu);margin:8px 0 0}.pr{display:none;font-size:12px;color:#555;margin-top:8px}.trust{border-left:4px solid var(--ac);background:var(--acs);border-radius:0 12px 12px 0;padding:12px 16px;font-size:13.5px;margin-bottom:14px}
-@media print{nav,.add,.x,.b,textarea,#toast,.noprint,footer{display:none!important}body{background:#fff;color:#000}.pg{display:none}.pg.on,body.all .pg{display:block}.pr{display:block}.cd,.r,.ic,.lay,details,.trust{box-shadow:none;background:#fff!important;border:1px solid #ccc;break-inside:avoid}.row,.lay{break-inside:avoid}}
+.step{display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--sf2);border-radius:13px;padding:14px 16px;margin-bottom:8px}.step.nx{background:var(--acs);outline:2px solid var(--ac)}.step.dn .n{color:var(--gd)}
+.step .n{font:700 22px var(--serif);color:var(--mu)}.step.nx .n{color:var(--ac)}.step .h{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.step p{margin:4px 0 0;font-size:13.5px;color:var(--mu)}.step label{font-size:13.5px;display:flex;gap:8px;margin-top:8px;align-items:center}.step input[type=checkbox]{width:18px;height:18px}
+.score{font:400 54px/1 var(--serif);color:var(--ac)}
+table.t{width:100%;border-collapse:collapse;font-size:14px}table.t th,table.t td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--dv)}table.t th{font-size:12.5px;color:var(--mu)}
+.src{font-size:12px;color:var(--mu);margin:8px 0 0}.pr{display:none;font-size:12px;color:#555;margin-top:8px}
+.trust{border-left:4px solid var(--ac);background:var(--acs);border-radius:0 12px 12px 0;padding:12px 16px;font-size:13.5px;margin-bottom:14px}
+.gd{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;align-items:start}
+.ic{background:var(--sf2);border-radius:14px;padding:18px 20px}.ic h3{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.ic p{font-size:14px;color:var(--mu);margin:8px 0 0}.ic p b{color:var(--tx)}.ic .y{font-size:12.5px;font-weight:600;color:var(--ac)}
+a{color:var(--ac)}
 footer{text-align:center;color:var(--mu);font-size:12.5px;padding:10px 0 40px}
+@media print{nav,.add,.x,.b,textarea,#toast,.noprint,footer,.seg{display:none!important}body{background:#fff;color:#000}.pg{display:none}.pg.on,body.all .pg{display:block}.pr{display:block}.cd,.r,.ic,.lay,.step,details,.trust{box-shadow:none;background:#fff!important;border:1px solid #ccc;break-inside:avoid;outline:0}.row,.lay{break-inside:avoid}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <nav aria-label="Sections"><div class="w">
 <span class="br">IMPERIUM PECUNIAE</span>
-<button data-p="ov" class="on">Overview</button><button data-p="pl">Plan</button><button data-p="ln">Learn</button><button data-p="rs">Research</button><button data-p="de">Germany</button><button data-p="cf">Cashflow</button><button data-p="nw">Net worth</button><button data-p="gl">Goals</button><button data-p="bd">Bonds</button><button data-p="gr">Growth</button>
+<button data-p="st" class="on">Start</button><button data-p="nm">My numbers</button><button data-p="pl">Plan</button><button data-p="tk">Track</button><button data-p="nw">Net worth</button><button data-p="gl">Goals</button><button data-p="ln">Learn</button><button data-p="bd">Bonds</button><button data-p="rs">Research</button><button data-p="de">Germany</button>
 <select id="cur" class="sp" aria-label="Currency"><option>EUR</option><option>USD</option><option>GBP</option><option>NGN</option></select>
 <button class="tg" id="pdf" type="button">Save PDF</button><button class="tg" id="tg" type="button">Theme</button>
 </div></nav>
 <main class="w"><div class="pr" id="pr"></div>
 
-<section class="pg on" id="ov"><h1>My finances</h1><p class="sub">Everything below is built from what you log in the other tabs. It is saved in this browser only.</p>
-<div class="rg" id="ovK"></div>
-<div class="cd" style="margin-top:14px"><h3>Where this month's spending went</h3><div id="ovC"></div></div>
-<div class="cd"><h3>Save as PDF</h3><p class="sub" style="margin-bottom:10px">Opens your browser’s print window. Choose “Save as PDF” as the destination.</p><div class="add" style="margin:0"><button class="b" id="pAll">Full report (every tab)</button><button class="b g" id="pOne">Current tab only</button></div></div>
-<div class="cd"><h3>Back up or restore</h3><p class="sub" style="margin-bottom:10px">Data lives only in this browser. Export copies it into the box so you can save the text somewhere safe. Paste it back and press Import to restore.</p>
-<textarea id="bk" aria-label="Backup data" placeholder="Backup text appears here"></textarea>
-<div class="add" style="margin:10px 0 0"><button class="b" id="bEx">Export</button><button class="b g" id="bIm">Import</button><button class="b g" id="bCl">Clear everything</button><span id="bMsg" class="sub" style="margin:0;align-self:center"></span></div></div>
+<section class="pg on" id="st"><h1>Money, from zero to confident</h1>
+<p class="sub">This site walks you through managing money in the right order. Enter your numbers once on <b>My numbers</b>. Every other page reads from there, so nothing is typed twice.</p>
+<div class="cd"><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><div><div class="score" id="stS">0</div><div class="rl">Money score out of 100</div></div><div style="flex:1;min-width:200px"><div class="meter"><i id="stM" style="width:0"></i></div><p class="sub" id="stN" style="margin:10px 0 0"></p></div></div></div>
+<div class="rg" id="stK" style="margin-bottom:14px"></div>
+<div class="cd"><h3>Your seven steps</h3><p class="sub" style="margin-bottom:12px">Do them in order. Each step makes the next one safe. The highlighted step is the one to work on now.</p><div id="stL"></div></div>
+<div class="cd"><h3>How to use this site</h3>
+<details open><summary>1. Fill in My numbers</summary><p>Your income, spending, savings, investments, property and debts. Choose whether you enter per month or per year.</p></details>
+<details><summary>2. Read your Plan</summary><p>It shows what you can afford to invest, where that money should go, and what it grows into.</p></details>
+<details><summary>3. Track and set goals</summary><p>Log what you actually spend and compare it with the plan. Give savings goals a date.</p></details>
+<details><summary>4. Learn and research</summary><p>Learn explains how money works in plain words. Research shows market data with sources. Germany covers local tax rules.</p></details>
+<div class="add" style="margin:12px 0 0"><button class="b" id="pAll">Save full report as PDF</button><button class="b g" data-go="nm">Go to My numbers</button></div></div>
 </section>
 
-<section class="pg" id="pl"><h1>My yearly plan</h1><p class="sub">Enter your year in numbers. It works out what you can afford to invest, where that money should go, and which categories are out of line. Rules of thumb, not advice.</p>
-<div class="cd"><h3>Income (per year)</h3><div class="fr"><div><label for="pI">After-tax income</label><input id="pI" type="number" min="0" step="any" placeholder="42000"></div><div><label for="pG">Or gross income</label><input id="pG" type="number" min="0" step="any" placeholder="60000"></div><div><label for="pT">Tax and social % (if gross)</label><input id="pT" type="number" min="0" max="80" step="any" placeholder="30"></div></div></div>
-<div class="cd"><h3>Expenses (per year)</h3><div class="fr"><div><label for="pH">Home: rent, utilities</label><input id="pH" type="number" min="0" step="any" placeholder="12000"></div><div><label for="pTr">Transport</label><input id="pTr" type="number" min="0" step="any" placeholder="2400"></div><div><label for="pF">Food</label><input id="pF" type="number" min="0" step="any" placeholder="4800"></div><div><label for="pIn">Insurance and health</label><input id="pIn" type="number" min="0" step="any" placeholder="3000"></div><div><label for="pD">Debt payments</label><input id="pD" type="number" min="0" step="any" placeholder="0"></div><div><label for="pO">Everything else</label><input id="pO" type="number" min="0" step="any" placeholder="5000"></div></div></div>
-<div class="cd"><h3>Investing</h3><div class="fr"><div><label for="pGoal">Amount you want to invest a year</label><input id="pGoal" type="number" min="0" step="any" placeholder="6000"></div><div><label for="pY">Years until you need it</label><input id="pY" type="number" min="0" step="1" placeholder="10"></div><div><label for="pC">If it fell 30%, you would</label><select id="pC" style="width:100%"><option value="-20">Probably sell</option><option value="0" selected>Worry but hold</option><option value="10">Hold or buy more</option></select></div></div></div>
+<section class="pg" id="nm"><h1>My numbers</h1>
+<p class="sub">The one place you enter what you earn, spend, own and owe. Everything else pulls from here. Rough numbers are fine to begin with, and you can correct them any time.</p>
+<div class="cd"><h3>I want to enter amounts</h3><div class="seg" id="per"><button data-v="y">Per year</button><button data-v="m">Per month</button></div>
+<h3>Income</h3><div class="fr"><div><label for="mNet">After-tax income (per <span class="pp"></span>)</label><input id="mNet" type="number" min="0" step="any" placeholder="what lands in your account"></div><div><label for="mGross">Or gross income</label><input id="mGross" type="number" min="0" step="any" placeholder="before tax"></div><div><label for="mTax">Tax and social % (if gross)</label><input id="mTax" type="number" min="0" max="80" step="any" placeholder="30"></div></div><div class="hint" id="nmI"></div></div>
+<div class="cd"><h3>Spending (per <span class="pp"></span>)</h3><div class="fr"><div><label for="mH">Home: rent or mortgage, utilities</label><input id="mH" type="number" min="0" step="any"></div><div><label for="mTr">Transport</label><input id="mTr" type="number" min="0" step="any"></div><div><label for="mF">Food</label><input id="mF" type="number" min="0" step="any"></div><div><label for="mIn">Insurance and health</label><input id="mIn" type="number" min="0" step="any"></div><div><label for="mO">Everything else</label><input id="mO" type="number" min="0" step="any" placeholder="phone, fun, clothes"></div></div><div class="hint">Debt payments are added automatically from the debts you list below.</div><div class="note" id="nmS" style="margin-top:12px"></div></div>
+<div class="cd"><h3>What I own</h3><p class="sub" style="margin-bottom:10px">Add each account, investment or property with its current value. Yield is optional: the yearly income it pays as a percentage, such as a bond coupon or a dividend.</p><div class="add"><input id="aN" placeholder="Name, e.g. Savings account" aria-label="Name"><select id="aT" aria-label="Type"><option value="Cash">Cash or savings</option><option value="Stocks">Stocks and ETFs</option><option value="Bonds">Bonds</option><option value="Property">Property</option><option value="Other">Other</option></select><input id="aV" type="number" min="0" step="any" placeholder="Value" aria-label="Value"><input id="aY" type="number" min="0" step="any" placeholder="Yield % (optional)" aria-label="Yield"><button class="b" id="aB">Add</button></div><div id="aL"></div></div>
+<div class="cd"><h3>What I owe</h3><p class="sub" style="margin-bottom:10px">Loans, credit cards, a mortgage. The monthly payment feeds your spending automatically.</p><div class="add"><input id="dN" placeholder="Name" aria-label="Name"><input id="dB" type="number" min="0" step="any" placeholder="Balance owed" aria-label="Balance"><input id="dR" type="number" min="0" step="any" placeholder="Interest % a year" aria-label="Rate"><input id="dP" type="number" min="0" step="any" placeholder="Monthly payment" aria-label="Payment"><button class="b" id="dBt">Add</button></div><div id="dL"></div></div>
+<div class="cd"><h3>My investing preferences</h3><div class="fr"><div><label for="mGoal">Amount I want to invest (per <span class="pp"></span>)</label><input id="mGoal" type="number" min="0" step="any"></div><div><label for="mYrs">Years until I need the money</label><input id="mYrs" type="number" min="0" step="1" placeholder="10"></div><div><label for="mCmf">If it fell 30%, I would</label><select id="mCmf" style="width:100%"><option value="-20">Probably sell</option><option value="0">Worry but hold</option><option value="10">Hold or buy more</option></select></div></div></div>
+<div class="cd"><h3>Back up or restore</h3><p class="sub" style="margin-bottom:10px">Your data is saved only in this browser. Export copies it into the box so you can keep the text somewhere safe. Paste it back and press Import to restore.</p><textarea id="bk" aria-label="Backup data" placeholder="Backup text appears here"></textarea><div class="add" style="margin:10px 0 0"><button class="b" id="bEx">Export</button><button class="b g" id="bIm">Import</button><button class="b g" id="bCl">Clear everything</button><span id="bMsg" class="sub" style="margin:0;align-self:center"></span></div></div>
+</section>
+
+<section class="pg" id="pl"><h1>My plan</h1>
+<p class="sub">Built from My numbers. It shows what you can afford to invest, where the money should go, and what it grows into. Every figure is given per year and per month. These are rules of thumb, not advice.</p>
 <div class="rg" id="pK" style="margin-bottom:14px"></div>
 <div class="cd"><h3>Where the investable money should go</h3><div class="rg" id="pA"></div></div>
 <div class="cd"><h3>What this means for you</h3><div id="pM"></div></div>
-<div class="cd"><h3>Your spending against common guidelines</h3><div style="overflow-x:auto"><table class="t"><thead><tr><th>Category</th><th>Per year</th><th>Share of income</th><th>Guideline</th><th></th></tr></thead><tbody id="pS"></tbody></table></div><p class="src">Guidelines are common planning rules of thumb as a share of after-tax income. Your city, family and goals can justify different numbers.</p></div></section>
+<div class="cd"><h3>What it grows into</h3><p class="sub" style="margin-bottom:10px" id="pPt"></p><div style="overflow-x:auto"><table class="t"><thead><tr><th>Yearly return</th><th>Value at the end</th><th>Of which growth</th></tr></thead><tbody id="pP"></tbody></table></div><div class="note" id="pFI"></div></div>
+<div class="cd"><h3>Your spending against common guidelines</h3><div style="overflow-x:auto"><table class="t"><thead><tr><th>Category</th><th>Per month</th><th>Per year</th><th>Share of income</th><th>Guideline</th><th></th></tr></thead><tbody id="pS"></tbody></table></div><p class="src">Guidelines are common rules of thumb as a share of after-tax income. Your city, family and goals can justify different numbers.</p></div>
+</section>
 
-<section class="pg" id="ln"><h1>How money works</h1><p class="sub">Read this first. It explains the ideas every other tab depends on, then the order to build your finances in. It is general education, not advice.</p>
-<div class="cd"><h3>The architecture: build from the bottom up</h3><p class="sub" style="margin-bottom:12px">Each layer rests on the one below. Skipping ahead is how people lose money.</p><div class="stack">
-<div class="lay"><span class="n">1</span><div><b>Cashflow: earn more than you spend</b><p>Nothing above works without a gap between income and spending. Track it in Cashflow. Saving 10 to 20% of income is a common target.</p></div></div>
-<div class="lay"><span class="n">2</span><div><b>Safety net: 3 to 6 months of spending</b><p>Kept in instant-access savings, not invested. Its job is to be there when your income stops, not to grow.</p></div></div>
-<div class="lay"><span class="n">3</span><div><b>Expensive debt: pay it off first</b><p>Clearing a 15% credit or overdraft debt is a guaranteed 15% return, which no investment can promise.</p></div></div>
-<div class="lay"><span class="n">4</span><div><b>Protection: insure against ruin</b><p>Health cover, personal liability, and income protection if others depend on you. Cheap relative to the disasters they cover.</p></div></div>
-<div class="lay"><span class="n">5</span><div><b>Core growth: broad, low-cost index funds</b><p>Global stock ETFs bought on a schedule. For long-term money this is usually the largest piece. Research here means choosing a cheap, diversified fund, not picking winners.</p></div></div>
-<div class="lay"><span class="n">6</span><div><b>Stability: bonds and savings</b><p>Sized by when you need the money. The closer the date, the larger this layer. Use the planner below.</p></div></div>
-<div class="lay"><span class="n">7</span><div><b>Satellites: single stocks, themes, crypto</b><p>Only money you can afford to lose. A common guideline is 5 to 10% of your investments, at most.</p></div></div>
-</div></div>
-<div class="cd"><h3>Stocks, bonds and cash: horizon planner</h3><div class="fr"><div><label for="lY">Years until you need the money</label><input id="lY" type="number" min="0" step="1" placeholder="10"></div><div><label for="lC">If your portfolio fell 30%, you would</label><select id="lC" style="width:100%"><option value="-20">Probably sell</option><option value="0" selected>Worry but hold</option><option value="10">Hold or buy more</option></select></div></div>
-<div class="rg" style="margin-top:12px"><div class="r e"><div class="rl">Starting split</div><div class="rv" id="lO">-</div></div><div class="r"><div class="rl">The rest</div><div class="rv" id="lN">-</div></div></div><div class="note">A starting framework based on common planning rules of thumb. Your own situation can justify something different.</div></div>
-<div class="cd"><h3>The ideas underneath</h3>
-<details open><summary>Compounding</summary><p>Interest earns interest. €100 a month at 7% a year for 30 years grows to about €122,000, of which only €36,000 is money you put in. Time does most of the work, so starting early matters more than starting big.</p></details>
-<details><summary>Inflation</summary><p>Prices rise over time, so money sitting idle buys less each year. At 3% inflation, buying power halves in about 24 years (72 divided by 3). Your savings need to earn at least the inflation rate to stand still.</p></details>
-<details><summary>Risk and return</summary><p>Higher expected return comes with bigger swings. Stocks can fall 30% or more in a bad year and have still rewarded patient holders over decades. The swings are the price of the return, not a malfunction.</p></details>
-<details><summary>Diversification</summary><p>Spread money across many companies, countries and asset types so one failure cannot ruin you. A single global index ETF holds thousands of companies at once.</p></details>
-<details><summary>Fees</summary><p>A 1% yearly fee sounds small. Over 30 years at 7% gross it cuts the final value by roughly a quarter. Check the TER (total expense ratio) before buying any fund.</p></details>
-<details><summary>Time horizon</summary><p>Money you need within about five years should not depend on the stock market. Money you will not touch for 15 years can ride out the swings.</p></details>
-<details><summary>Stocks, bonds and cash</summary><p><b>Stocks</b> are ownership: highest growth, biggest swings. <b>Bonds</b> are loans: steadier income and a cushion when stocks fall. <b>Cash</b> is safe and liquid but loses ground to inflation. A sound plan mixes them for your horizon.</p></details></div></section>
+<section class="pg" id="tk"><h1>Track</h1>
+<p class="sub">Log what actually happens each month, then compare it with your plan. Saved money counts toward your savings, not as spending.</p>
+<div class="rg" id="tK" style="margin-bottom:14px"></div>
+<div class="cd"><div class="add"><select id="tT" aria-label="Type"><option value="out">Spent</option><option value="in">Earned</option><option value="save">Saved</option></select><input id="tC" list="cats" placeholder="Category" aria-label="Category"><datalist id="cats"><option>Salary</option><option>Rent</option><option>Food</option><option>Transport</option><option>Bills</option><option>Health</option><option>Fun</option><option>Emergency fund</option><option>Investing</option><option>Other</option></datalist><input id="tA" type="number" min="0" step="any" placeholder="Amount" aria-label="Amount"><input id="tD" type="date" aria-label="Date"><input id="tN" placeholder="Note (optional)" aria-label="Note"><button class="b" id="tB">Add</button></div>
+<div class="add"><input id="tM" type="month" aria-label="Month to view"></div><div id="tL"></div></div></section>
 
-<section class="pg" id="rs"><h1>Research</h1><p class="sub">Market facts with their dates and sources, plus a notebook for your own research. Use it to learn what to look at, not what to buy.</p>
-<div class="trust"><b>How to trust this page.</b> Every figure below has a date and a source. Lists of “top performers” describe the past, and last year’s winners are often next year’s losers. Verify anything you act on with the issuer, your broker, or an official source. Facts last checked 21 November 2026.</div>
-<div class="cd"><h3>Live market data</h3><p class="sub" style="margin-bottom:10px">Searches the web through your Firecrawl connector and has Claude pull out the figures. Every line links to its source and carries its own date. It runs when you press the button and uses your own Firecrawl and Claude usage. Sources can disagree, so check the link before acting.</p><div class="add" style="margin:0 0 10px"><button class="b" id="lvB">Refresh live data</button><span id="lvS" class="sub" style="margin:0;align-self:center"></span></div><div id="lvO"></div></div>
-<div class="cd"><h3>Snapshot: top performing stocks of 2026 (5 August)</h3><div style="overflow-x:auto"><table class="t"><thead><tr><th>Stock</th><th>Country</th><th>Gain in 2026</th><th>Business</th></tr></thead><tbody>
-<tr><td>Soitec</td><td>France</td><td class="pos">+414.5%</td><td>Semiconductor materials</td></tr>
-<tr><td>AT&amp;S</td><td>Austria</td><td class="pos">+343.5%</td><td>Chip substrates for AI servers</td></tr>
-<tr><td>Technoprobe</td><td>Italy</td><td class="pos">+135.1%</td><td>Technology supplier</td></tr>
-<tr><td>Saipem</td><td>Italy</td><td class="pos">+75.8%</td><td>Energy engineering</td></tr>
-<tr><td>ArcelorMittal</td><td>Luxembourg</td><td class="pos">+65.3%</td><td>Steel</td></tr></tbody></table></div>
-<p class="src">Best performers in the STOXX Europe 600 above €1 billion market value, price change from 1 January to 5 August 2026. Source: Euronews, 6 August 2026. Five of the ten are shown.</p>
-<div class="note">What it teaches: seven of the top ten supply the AI build-out, so this is one theme, not ten ideas. Technoprobe was still about 40% below its June high despite the gain. Huge winners are volatile.</div></div>
-<div class="cd"><h3>The German angle</h3>
-<details open><summary>Market level</summary><p>The DAX rose 23% in 2025, its best year since 2019 (Trading Economics, 30 Dec 2025), and broke above 26,100 in August 2026 (Euronews). It was near record highs again on 10 November.</p></details>
-<details><summary>2026 leaders: German chip suppliers</summary><p>Aixtron, SUSS MicroTec, Siltronic, Elmos Semiconductor and PVA TePla carried much of the MDAX and SDAX gains to 30 June 2026 (STOXX). Infineon reported record full-year results on 10 November 2026.</p></details>
-<details><summary>Yesterday’s winners and losers</summary><p>In 2025 German defence stocks more than doubled, while Puma and Redcare Pharmacy each fell about 51% and SAP lost 12% (Deutsche Börse). Leadership changes fast, which is why a broad index fund is the core, not last year’s winner.</p></details></div>
-<div class="cd"><h3>Bonds: where yields stand</h3><div class="rg"><div class="r e"><div class="rl">German 10-year Bund yield</div><div class="rv">3.38%</div><div class="rn">16 Nov 2026, Dow Jones</div></div><div class="r"><div class="rl">US 10-year Treasury yield</div><div class="rv">5.12%</div><div class="rn">16 Nov 2026, Dow Jones</div></div><div class="r"><div class="rl">Bund yield, mid-Dec 2025</div><div class="rv">2.84%</div><div class="rn">Trading Economics</div></div></div>
-<div class="note">Bund yields climbed above 3.45% in September 2026, the highest since 2011, as the ECB raised rates and oil lifted inflation. When yields rise, existing bonds fall in price, so long bonds bought earlier lost value this year. New bonds now pay more.</div>
-<p class="src">I could not find a reliable ranking of top performing bonds. For bonds the useful comparison is yield to maturity, credit quality and duration, not last year’s price change. Use the Bonds tab calculator.</p></div>
-<div class="cd"><h3>Your research checklist</h3>
-<details><summary>Before buying a stock</summary><p>What does it sell and to whom? Is revenue growing? Is it profitable and how much debt does it carry? What is the valuation (price to earnings) against peers? Why is the price moving? How much of your money would this be? Write the thesis in one sentence.</p></details>
-<details><summary>Before buying a bond</summary><p>Who is the borrower and what is the credit rating? What is the yield to maturity? When does it mature? What is the duration (rate sensitivity)? Which currency? Can you sell it easily?</p></details>
-<details><summary>Before buying an ETF</summary><p>What index does it track and how many holdings? Total expense ratio? Is it EU-registered (UCITS)? Accumulating or distributing? Fund size, and how closely it tracks its index?</p></details></div>
-<div class="cd"><h3>My watchlist</h3><div class="add"><input id="wN" placeholder="Name or ticker" aria-label="Name"><select id="wT" aria-label="Type"><option>Stock</option><option>Bond</option><option>ETF</option><option>Other</option></select><input id="wX" placeholder="Why it interests you" aria-label="Notes"><button class="b" id="wB">Add</button></div><div id="wL"></div></div></section>
-
-<section class="pg" id="de"><h1>Investing in Germany</h1><p class="sub">The tax rules and account types that shape every investment decision there. Figures are for 2026 from tax guides citing the German finance ministry.</p>
-<div class="rg" style="margin-bottom:14px"><div class="r e"><div class="rl">Tax on investment income</div><div class="rv">26.375%</div><div class="rn">25% flat tax plus 5.5% solidarity surcharge. Church members pay about 27.8 to 28%.</div></div><div class="r"><div class="rl">Tax-free allowance</div><div class="rv">€1,000</div><div class="rn">Per person a year, €2,000 for couples (Sparerpauschbetrag)</div></div><div class="r"><div class="rl">Stock ETF partial exemption</div><div class="rv">30%</div><div class="rn">15% for mixed funds, 0% for bond funds</div></div><div class="r"><div class="rl">Vorabpauschale base rate</div><div class="rv">3.20%</div><div class="rn">2026, drives tax on accumulating ETFs</div></div></div>
-<div class="cd"><h3>German tax estimator</h3><div class="fr"><div><label for="xG">Gain or income (EUR)</label><input id="xG" type="number" min="0" step="any" placeholder="10000"></div><div><label for="xA">Allowance left (EUR)</label><input id="xA" type="number" min="0" step="any" placeholder="1000"></div><div><label for="xF">Investment type</label><select id="xF" style="width:100%"><option value=".3">Stock ETF (30% exempt)</option><option value=".15">Mixed fund (15% exempt)</option><option value="0">Bond fund, bonds, savings</option></select></div></div>
-<div class="rg" style="margin-top:12px"><div class="r e"><div class="rl">Estimated tax</div><div class="rv" id="xT">-</div></div><div class="r"><div class="rl">You keep</div><div class="rv" id="xN">-</div></div></div><div class="note">Excludes church tax and assumes a German broker withholds it. Example: €10,000 gain on a stock ETF costs about €1,846, versus €2,638 on a bond fund.</div></div>
-<div class="cd"><h3>How it fits together</h3>
-<details open><summary>Where each layer lives</summary><p><b>Safety net:</b> instant-access savings (Tagesgeld) at a bank, covered by the EU deposit guarantee of €100,000 per person per bank. <b>Investments:</b> a securities account (Depot) at a regulated broker, ideally one that handles German tax reporting for you.</p></details>
-<details><summary>Use your allowance</summary><p>File a Freistellungsauftrag with each bank or broker so the first €1,000 of income is paid out untaxed. Split it across providers if you have several, and never exceed the total.</p></details>
-<details><summary>ETFs: UCITS, accumulating or distributing</summary><p>US-listed ETFs are generally not offered to EU retail investors, so look for UCITS ETFs. Accumulating funds reinvest income but can trigger the Vorabpauschale, a small yearly tax. Distributing funds pay cash that is taxed when received.</p></details>
-<details><summary>German bonds</summary><p>Federal bonds (Bunds) are the benchmark safe asset, with maturities from 2 to 30 years. Interest is taxed at 26.375% after your allowance, with no partial exemption, which is why bond funds look worse after tax than stock funds.</p></details>
-<details><summary>Pensions</summary><p>State-supported products exist, including the employer scheme (bAV), Riester and Rürup. Rules and reforms keep changing, so check the current terms before committing.</p></details>
-<details><summary>Sources worth trusting</summary><p>Bundesbank for yields and statistics, BaFin for consumer protection, Finanztip and Stiftung Warentest for independent guides, and a Steuerberater for your personal tax. Compare at least two before acting.</p></details></div></section>
-
-<section class="pg" id="cf"><h1>Cashflow</h1><p class="sub">Log money in, money out and money you set aside. Saved money counts toward your savings rate, not as spending.</p>
-<div class="cd"><div class="add">
-<select id="tT"><option value="out">Spent</option><option value="in">Earned</option><option value="save">Saved</option></select>
-<input id="tC" list="cats" placeholder="Category" aria-label="Category"><datalist id="cats"><option>Salary</option><option>Rent</option><option>Food</option><option>Transport</option><option>Phone &amp; data</option><option>Bills</option><option>Health</option><option>Education</option><option>Fun</option><option>Emergency fund</option><option>Investing</option><option>Other</option></datalist>
-<input id="tA" type="number" min="0" step="any" placeholder="Amount" aria-label="Amount"><input id="tD" type="date" aria-label="Date"><input id="tN" placeholder="Note (optional)" aria-label="Note"><button class="b" id="tB">Add</button></div>
-<div class="add"><input id="tM" type="month" aria-label="Month to view"></div>
-<div id="tL"></div></div></section>
-
-<section class="pg" id="nw"><h1>Net worth</h1><p class="sub">What you own minus what you owe. Cash assets also drive your emergency runway on the overview.</p>
+<section class="pg" id="nw"><h1>Net worth</h1>
+<p class="sub">What you own minus what you owe, read from My numbers. It is the single best score of your finances, and it should rise over time.</p>
 <div class="rg" id="nwK" style="margin-bottom:14px"></div>
-<div class="cd"><h3>Assets</h3><div class="add"><input id="aN" placeholder="Name" aria-label="Asset name"><select id="aT"><option>Cash</option><option>Investment</option><option>Property</option><option>Other</option></select><input id="aV" type="number" min="0" step="any" placeholder="Value" aria-label="Asset value"><button class="b" id="aB">Add</button></div><div id="aL"></div></div>
-<div class="cd"><h3>Debts</h3><div class="add"><input id="dN" placeholder="Name" aria-label="Debt name"><input id="dB" type="number" min="0" step="any" placeholder="Balance" aria-label="Balance"><input id="dR" type="number" min="0" step="any" placeholder="Rate % / yr" aria-label="Interest rate"><input id="dP" type="number" min="0" step="any" placeholder="Monthly payment" aria-label="Monthly payment"><button class="b" id="dBt">Add</button></div><div id="dL"></div></div></section>
+<div class="cd"><h3>What you own, by type</h3><div id="nwB"></div></div>
+<div class="cd"><h3>What you owe</h3><div id="nwD"></div></div>
+<div class="add"><button class="b g" data-go="nm">Edit in My numbers</button></div></section>
 
-<section class="pg" id="gl"><h1>Goals</h1><p class="sub">Give each goal a target and a date and see what it asks of you each month.</p>
+<section class="pg" id="gl"><h1>Goals</h1>
+<p class="sub">A goal is a target amount by a date, such as a deposit or a trip. Add the date and it shows what to save each month.</p>
+<div class="note" id="gC" style="margin:0 0 14px"></div>
 <div class="cd"><div class="add"><input id="gN" placeholder="Goal" aria-label="Goal"><input id="gT" type="number" min="0" step="any" placeholder="Target" aria-label="Target"><input id="gS" type="number" min="0" step="any" placeholder="Saved so far" aria-label="Saved so far"><input id="gD" type="month" aria-label="Target month"><button class="b" id="gB">Add</button></div><div id="gL"></div></div></section>
 
-<section class="pg" id="bd"><h1>Bonds</h1><p class="sub">A bond is a loan you make. The borrower pays you interest, then returns your money on a set date. Track yours and test any bond before you buy.</p>
-<div class="cd"><h3>My bonds</h3><div class="add"><input id="hN" placeholder="Name" aria-label="Bond name"><input id="hF" type="number" min="0" step="any" placeholder="Face value" aria-label="Face value"><input id="hC" type="number" min="0" step="any" placeholder="Coupon %" aria-label="Coupon"><input id="hP" type="number" min="0" step="any" placeholder="Price paid" aria-label="Price paid"><input id="hY" type="number" min="2000" step="1" placeholder="Matures (year)" aria-label="Maturity year"><button class="b" id="hB">Add</button></div><div id="hL"></div><div id="hT"></div></div>
-<div class="cd"><h3>Bond calculator</h3><div class="fr">
-<div><label for="bF">Face value</label><input id="bF" type="number" min="0" step="any" placeholder="1000"></div><div><label for="bC">Coupon %</label><input id="bC" type="number" min="0" step="any" placeholder="4.5"></div><div><label for="bP">Price</label><input id="bP" type="number" min="0" step="any" placeholder="960"></div><div><label for="bY">Years left</label><input id="bY" type="number" min="1" step="1" placeholder="10"></div></div>
+<section class="pg" id="ln"><h1>How money works</h1><p class="sub">New to money? Start here. It explains the ideas everything else depends on, then the order to build your finances in. General education, not advice.</p>
+<div class="cd"><h3>The architecture: build from the bottom up</h3><p class="sub" style="margin-bottom:12px">Each layer rests on the one below. Skipping ahead is how people lose money. The Start page tracks these steps for you.</p><div class="stack">
+<div class="lay"><span class="n">1</span><div><b>Cashflow: earn more than you spend</b><p>Nothing above works without a gap between income and spending. Saving 10 to 20% of income is a common target.</p></div></div>
+<div class="lay"><span class="n">2</span><div><b>Safety net: 3 to 6 months of spending</b><p>Kept in instant-access savings, not invested. Its job is to be there when income stops, not to grow.</p></div></div>
+<div class="lay"><span class="n">3</span><div><b>Expensive debt: pay it off first</b><p>Clearing a 15% debt is a guaranteed 15% return, which no investment can promise.</p></div></div>
+<div class="lay"><span class="n">4</span><div><b>Protection: insure against ruin</b><p>Health cover, personal liability, and income protection if others depend on you.</p></div></div>
+<div class="lay"><span class="n">5</span><div><b>Core growth: broad, low-cost index funds</b><p>Global stock ETFs bought on a schedule. For long-term money this is usually the largest piece.</p></div></div>
+<div class="lay"><span class="n">6</span><div><b>Stability: bonds and savings</b><p>Sized by when you need the money. The closer the date, the larger this layer.</p></div></div>
+<div class="lay"><span class="n">7</span><div><b>Satellites: single stocks, themes, crypto</b><p>Only money you can afford to lose. A common guideline is 5 to 10% of your investments at most.</p></div></div></div></div>
+<div class="cd"><h3>Stocks, bonds and cash: horizon planner</h3><div class="fr"><div><label for="lY">Years until you need the money</label><input id="lY" type="number" min="0" step="1" placeholder="10"></div><div><label for="lC">If it fell 30%, you would</label><select id="lC" style="width:100%"><option value="-20">Probably sell</option><option value="0" selected>Worry but hold</option><option value="10">Hold or buy more</option></select></div></div>
+<div class="rg" style="margin-top:12px"><div class="r e"><div class="rl">Starting split</div><div class="rv" id="lO">-</div></div><div class="r"><div class="rl">The rest</div><div class="rv" id="lN">-</div></div></div><div class="note">A starting framework based on common planning rules of thumb. Your own situation can justify something different.</div></div>
+<div class="cd"><h3>See compounding at work</h3><div class="fr"><div><label for="kI">Starting amount</label><input id="kI" type="number" min="0" step="any" placeholder="0"></div><div><label for="kM">Added each month</label><input id="kM" type="number" min="0" step="any" placeholder="100"></div><div><label for="kR">Return % a year</label><input id="kR" type="number" min="0" step="any" placeholder="7"></div><div><label for="kY">Years</label><input id="kY" type="number" min="1" step="1" placeholder="10"></div></div>
+<div class="rg" style="margin-top:12px"><div class="r e"><div class="rl">Final value</div><div class="rv" id="kF">-</div></div><div class="r"><div class="rl">You put in</div><div class="rv" id="kC">-</div></div><div class="r"><div class="rl">Growth</div><div class="rv" id="kG">-</div></div></div></div>
+<div class="cd"><h3>The ideas underneath</h3>
+<details open><summary>Compounding</summary><p>Interest earns interest. €100 a month at 7% a year for 30 years grows to about €122,000, of which only €36,000 is your own money. Starting early matters more than starting big.</p></details>
+<details><summary>Inflation</summary><p>Prices rise over time, so idle money buys less each year. At 3% inflation, buying power halves in about 24 years (72 divided by 3).</p></details>
+<details><summary>Risk and return</summary><p>Higher expected return comes with bigger swings. Stocks can fall 30% or more in a bad year and still have rewarded patient holders over decades.</p></details>
+<details><summary>Diversification</summary><p>Spread money across many companies, countries and asset types so one failure cannot ruin you. One global index ETF holds thousands of companies.</p></details>
+<details><summary>Fees</summary><p>A 1% yearly fee sounds small. Over 30 years at 7% gross it cuts the final value by roughly a quarter. Check the TER (total expense ratio) of any fund.</p></details>
+<details><summary>Stocks, bonds and cash</summary><p><b>Stocks</b> are ownership: highest growth, biggest swings. <b>Bonds</b> are loans: steadier income and a cushion when stocks fall. <b>Cash</b> is safe but loses ground to inflation.</p></details></div>
+<div class="cd"><h3>Words you will meet</h3>
+<details><summary>ETF</summary><p>Exchange-traded fund: a basket of many investments you buy as one share. A world ETF holds thousands of companies.</p></details>
+<details><summary>Index</summary><p>A list of companies used as a yardstick, such as the S&amp;P 500 or the DAX. An index fund simply copies it.</p></details>
+<details><summary>Yield</summary><p>The yearly income an investment pays, as a percentage of its price.</p></details>
+<details><summary>Dividend</summary><p>A share of profit a company pays its shareholders, usually once or twice a year.</p></details>
+<details><summary>Net worth</summary><p>Everything you own minus everything you owe.</p></details>
+<details><summary>Savings rate</summary><p>The share of your income left after spending. Higher means faster progress.</p></details></div></section>
+
+<section class="pg" id="bd"><h1>Bonds</h1><p class="sub">A bond is a loan you make. The borrower, a government or company, pays you interest and returns your money on a set date. Bonds are the steady part of a portfolio. Live bond yields and top performing bond funds are on the Research page.</p>
+<div class="cd"><h3>Bond calculator</h3><p class="sub" style="margin-bottom:10px">Test any bond before you buy. Prices are usually quoted against a face value of 100 or 1,000.</p><div class="fr">
+<div><label for="bF">Face value (par)</label><input id="bF" type="number" min="0" step="any" placeholder="1000"><div class="hint">What you get back at maturity</div></div><div><label for="bC">Coupon %</label><input id="bC" type="number" min="0" step="any" placeholder="4.5"><div class="hint">Yearly interest on face value</div></div><div><label for="bP">Price you pay</label><input id="bP" type="number" min="0" step="any" placeholder="960"><div class="hint">Below face is a discount</div></div><div><label for="bY">Years left</label><input id="bY" type="number" min="1" step="1" placeholder="10"></div></div>
 <div class="rg" style="margin-top:14px"><div class="r e"><div class="rl">Yield to maturity</div><div class="rv" id="cY">-</div><div class="rn">True yearly return if held to the end</div></div><div class="r"><div class="rl">Yearly income</div><div class="rv" id="cI">-</div></div><div class="r"><div class="rl">Current yield</div><div class="rv" id="cCy">-</div></div><div class="r"><div class="rl">Total return</div><div class="rv" id="cTo">-</div></div><div class="r"><div class="rl">Duration</div><div class="rv" id="cD">-</div></div><div class="r"><div class="rl">If rates rise 1 point</div><div class="rv" id="cS">-</div><div class="rn">Approximate price change</div></div></div>
 <div class="note" id="cN" style="display:none"></div></div>
-<div class="cd"><h3>How bonds work</h3>
-<details open><summary>Prices and yields move opposite</summary><p>When rates rise, older lower-paying bonds lose value, and when rates fall they gain. Held to maturity you still get face value back, so a dip only hurts if you must sell early.</p></details>
-<details><summary>Par, coupon, maturity</summary><p><b>Par</b> is the amount repaid. The <b>coupon</b> is the yearly interest as a share of par. <b>Maturity</b> is the repayment date.</p></details>
+<div class="cd"><h3>The one idea that explains bonds</h3><details open><summary>Prices and yields move opposite</summary><p>When rates rise, older lower-paying bonds lose value, and when rates fall they gain. Held to maturity you still get face value back, so a dip only hurts if you must sell early.</p></details></div>
+<div class="gd">
+<div class="ic"><h3>Government bonds<span class="tag t-l">Low risk</span></h3><div class="y">Lowest yields, highest safety</div><p>Issued by national governments such as German Bunds, US Treasuries or UK gilts. <b>Watch out:</b> weaker governments carry real default risk, and local-currency bonds lose value if inflation bites.</p></div>
+<div class="ic"><h3>Corporate bonds<span class="tag t-m">Low to medium</span></h3><div class="y">Yield rises as credit quality falls</div><p>Loans to companies. Investment grade (BBB and above) is sturdier. <b>Watch out:</b> the company can default.</p></div>
+<div class="ic"><h3>High-yield (junk) bonds<span class="tag t-h">High risk</span></h3><div class="y">Pays more because it can fail</div><p>Companies rated below BBB. In a downturn they behave more like stocks than bonds.</p></div>
+<div class="ic"><h3>Inflation-linked bonds<span class="tag t-l">Low risk</span></h3><div class="y">Principal rises with inflation</div><p>Protect buying power over decades, but can still fall in price when real yields rise.</p></div>
+<div class="ic"><h3>Zero-coupon bonds<span class="tag t-m">Rate sensitive</span></h3><div class="y">Bought at a discount, paid at par</div><p>No interest payments. Good for a known sum on a known date, but the longest ones swing hardest.</p></div>
+<div class="ic"><h3>Bond funds and ETFs<span class="tag t-m">Diversified</span></h3><div class="y">One purchase, hundreds of bonds</div><p>The easiest way for most people to own bonds. A fund never matures, so its price can stay down after rates rise.</p></div></div>
+<div class="cd" style="margin-top:14px"><h3>Bond vocabulary</h3>
+<details><summary>Par, coupon, maturity</summary><p><b>Par</b> is the amount repaid. The <b>coupon</b> is the fixed yearly interest. <b>Maturity</b> is the repayment date.</p></details>
 <details><summary>Current yield versus yield to maturity</summary><p>Current yield is coupon over price. Yield to maturity also counts the gain or loss against par, so use it to compare bonds.</p></details>
-<details><summary>Types</summary><p><b>Government:</b> safest, lowest yield. <b>Corporate:</b> more income, can default. <b>High-yield:</b> pays more because it can fail. <b>Inflation-linked:</b> principal follows inflation. <b>Zero-coupon:</b> no interest, bought at a discount. <b>Savings bonds and treasury bills:</b> retail products, compare their rate with local inflation.</p></details>
-<details><summary>Risks and ladders</summary><p><b>Rate, credit, inflation, call and liquidity risk</b> are the main ones. A ladder splits money across bonds maturing in different years, so one matures regularly and you reinvest at current rates.</p></details></div></section>
+<details><summary>Credit ratings</summary><p>Agencies grade borrowers from AAA (strongest) to D (in default). BBB- and above is investment grade.</p></details>
+<details><summary>Duration</summary><p>Sensitivity to interest rates. A duration of 7 means roughly a 7% price fall if rates rise 1 point.</p></details>
+<details><summary>Bond ladders</summary><p>Split money across bonds maturing in different years. One matures regularly and you reinvest at current rates.</p></details>
+<details><summary>Main risks</summary><p><b>Interest rate, credit, inflation, call and liquidity risk.</b></p></details></div></section>
 
-<section class="pg" id="gr"><h1>Growth</h1><p class="sub">See how much of a future balance is your money and how much is growth.</p>
-<div class="cd"><div class="fr"><div><label for="gI">Starting amount</label><input id="gI" type="number" min="0" step="any" placeholder="0"></div><div><label for="gM">Monthly add</label><input id="gM" type="number" min="0" step="any" placeholder="100"></div><div><label for="gR">Return % / yr</label><input id="gR" type="number" min="0" step="any" placeholder="7"></div><div><label for="gY">Years</label><input id="gY" type="number" min="1" step="1" placeholder="10"></div></div>
-<div class="rg" style="margin-top:14px"><div class="r e"><div class="rl">Final value</div><div class="rv" id="rF">-</div></div><div class="r"><div class="rl">You put in</div><div class="rv" id="rC">-</div></div><div class="r"><div class="rl">Growth</div><div class="rv" id="rG">-</div></div><div class="r"><div class="rl">Years to double</div><div class="rv" id="r72">-</div><div class="rn">Rule of 72</div></div></div>
-<div class="note">Stocks have averaged about 10% a year over the long run, roughly 7% after inflation, with large swings along the way. These are guidelines, not advice.</div></div></section>
+<section class="pg" id="rs"><h1>Research</h1><p class="sub">Market facts with their dates and sources, plus a notebook for your own research. Use it to learn what to look at, not what to buy.</p>
+<div class="trust"><b>How to trust this page.</b> Every figure has a date and a source. Lists of top performers describe the past, and last year’s winners are often next year’s losers. Verify anything you act on with the issuer, your broker, or an official source.</div>
+<div class="cd"><h3>Live market data</h3><p class="sub" style="margin-bottom:10px">Top performing stocks and bond funds this year, plus government bond yields. On GitHub this comes from a data file that an automatic job refreshes twice each weekday. Inside Claude it can instead search the web through your Firecrawl connector. Rankings cover the stocks and funds in the list, not the whole market. Check the source before acting.</p><div class="add" style="margin:0 0 10px"><button class="b" id="lvB">Refresh live data</button><span id="lvS" class="sub" style="margin:0;align-self:center"></span></div><div id="lvO"></div></div>
+<div class="cd"><h3>Snapshot: top performing stocks of 2026 (5 August)</h3><div style="overflow-x:auto"><table class="t"><thead><tr><th>Stock</th><th>Country</th><th>Gain in 2026</th><th>Business</th></tr></thead><tbody>
+<tr><td>Soitec</td><td>France</td><td class="pos">+414.5%</td><td>Semiconductor materials</td></tr><tr><td>AT&amp;S</td><td>Austria</td><td class="pos">+343.5%</td><td>Chip substrates for AI servers</td></tr><tr><td>Technoprobe</td><td>Italy</td><td class="pos">+135.1%</td><td>Technology supplier</td></tr><tr><td>Saipem</td><td>Italy</td><td class="pos">+75.8%</td><td>Energy engineering</td></tr><tr><td>ArcelorMittal</td><td>Luxembourg</td><td class="pos">+65.3%</td><td>Steel</td></tr></tbody></table></div>
+<p class="src">STOXX Europe 600 stocks above €1 billion market value, price change from 1 January to 5 August 2026. Source: Euronews, 6 August 2026. Five of the ten are shown.</p>
+<div class="note">Seven of the top ten supply the AI build-out, so this is one theme, not ten ideas. Huge winners are volatile: Technoprobe was still about 40% below its June high.</div></div>
+<div class="cd"><h3>The German angle</h3>
+<details open><summary>Market level</summary><p>The DAX rose 23% in 2025, its best year since 2019 (Trading Economics), and broke above 26,100 in August 2026 (Euronews).</p></details>
+<details><summary>2026 leaders: German chip suppliers</summary><p>Aixtron, SUSS MicroTec, Siltronic, Elmos Semiconductor and PVA TePla carried much of the MDAX and SDAX gains to 30 June 2026 (STOXX). Infineon reported record full-year results on 10 November 2026.</p></details>
+<details><summary>Yesterday’s winners and losers</summary><p>In 2025 German defence stocks more than doubled, while Puma and Redcare Pharmacy each fell about 51% (Deutsche Börse). Leadership changes fast, which is why a broad index fund is the core.</p></details></div>
+<div class="cd"><h3>Bonds snapshot: where yields stood</h3><div class="rg"><div class="r e"><div class="rl">German 10-year Bund yield</div><div class="rv">3.38%</div><div class="rn">16 Nov 2026, Dow Jones</div></div><div class="r"><div class="rl">US 10-year Treasury yield</div><div class="rv">5.12%</div><div class="rn">16 Nov 2026, Dow Jones</div></div><div class="r"><div class="rl">Bund yield, mid-Dec 2025</div><div class="rv">2.84%</div><div class="rn">Trading Economics</div></div></div>
+<div class="note">Bund yields climbed above 3.45% in September 2026, the highest since 2011, as the ECB raised rates. When yields rise, existing bonds fall in price, so long bonds bought earlier lost value this year. New bonds now pay more.</div></div>
+<div class="cd"><h3>Your research checklist</h3>
+<details><summary>Before buying a stock</summary><p>What does it sell and to whom? Is revenue growing? Is it profitable and how much debt does it carry? What is the valuation (price to earnings) against peers? Why is the price moving? How much of your money would this be?</p></details>
+<details><summary>Before buying a bond</summary><p>Who is the borrower and what is the rating? What is the yield to maturity? When does it mature? What is the duration? Which currency? Can you sell it easily?</p></details>
+<details><summary>Before buying an ETF</summary><p>What index does it track? Total expense ratio? Is it EU-registered (UCITS)? Accumulating or distributing? Fund size, and how closely it tracks its index?</p></details></div>
+<div class="cd"><h3>My watchlist</h3><div class="add"><input id="wN" placeholder="Name or ticker" aria-label="Name"><select id="wT" aria-label="Type"><option>Stock</option><option>Bond</option><option>ETF</option><option>Other</option></select><input id="wX" placeholder="Why it interests you" aria-label="Notes"><button class="b" id="wB">Add</button></div><div id="wL"></div></div></section>
+
+<section class="pg" id="de"><h1>Investing in Germany</h1><p class="sub">The tax rules and account types that shape every investment decision there. Figures are for 2026 from tax guides citing the German finance ministry. Confirm anything important with a tax adviser.</p>
+<div class="rg" style="margin-bottom:14px"><div class="r e"><div class="rl">Tax on investment income</div><div class="rv">26.375%</div><div class="rn">25% flat tax plus 5.5% solidarity surcharge. Church members pay about 27.8 to 28%.</div></div><div class="r"><div class="rl">Tax-free allowance</div><div class="rv">€1,000</div><div class="rn">Per person a year, €2,000 for couples (Sparerpauschbetrag)</div></div><div class="r"><div class="rl">Stock ETF partial exemption</div><div class="rv">30%</div><div class="rn">15% for mixed funds, 0% for bond funds</div></div><div class="r"><div class="rl">Vorabpauschale base rate</div><div class="rv">3.20%</div><div class="rn">2026, drives tax on accumulating ETFs</div></div></div>
+<div class="cd"><h3>German tax estimator</h3><div class="fr"><div><label for="xG">Gain or income (EUR)</label><input id="xG" type="number" min="0" step="any" placeholder="10000"></div><div><label for="xA">Allowance left (EUR)</label><input id="xA" type="number" min="0" step="any" placeholder="1000"></div><div><label for="xF">Investment type</label><select id="xF" style="width:100%"><option value=".3">Stock ETF (30% exempt)</option><option value=".15">Mixed fund (15% exempt)</option><option value="0">Bond fund, bonds, savings</option></select></div></div>
+<div class="rg" style="margin-top:12px"><div class="r e"><div class="rl">Estimated tax</div><div class="rv" id="xT">-</div></div><div class="r"><div class="rl">You keep</div><div class="rv" id="xN">-</div></div></div><div class="note">Excludes church tax and assumes a German broker withholds it. A €10,000 gain on a stock ETF costs about €1,846, versus €2,638 on a bond fund.</div></div>
+<div class="cd"><h3>How it fits together</h3>
+<details open><summary>Where each layer lives</summary><p><b>Safety net:</b> instant-access savings (Tagesgeld), covered by the EU deposit guarantee of €100,000 per person per bank. <b>Investments:</b> a securities account (Depot) at a regulated broker that handles German tax reporting.</p></details>
+<details><summary>Use your allowance</summary><p>File a Freistellungsauftrag with each bank or broker so the first €1,000 of income is paid out untaxed. Split it across providers if you have several.</p></details>
+<details><summary>ETFs: UCITS, accumulating or distributing</summary><p>US-listed ETFs are generally not offered to EU retail investors, so look for UCITS ETFs. Accumulating funds reinvest income but can trigger the Vorabpauschale. Distributing funds pay cash that is taxed when received.</p></details>
+<details><summary>German bonds</summary><p>Federal bonds (Bunds) are the benchmark safe asset, from 2 to 30 years. Interest is taxed at 26.375% after your allowance with no partial exemption.</p></details>
+<details><summary>Pensions</summary><p>State-supported products exist, including the employer scheme (bAV), Riester and Rürup. Rules keep changing, so check current terms.</p></details>
+<details><summary>Sources worth trusting</summary><p>Bundesbank for yields, BaFin for consumer protection, Finanztip and Stiftung Warentest for independent guides, and a Steuerberater for personal tax.</p></details></div></section>
 </main>
-<div id="toast" class="sub" style="text-align:center"></div><footer>Imperium Pecuniae. Private to this browser. Not financial advice.</footer>
+<div id="toast" class="sub" style="text-align:center"></div>
+<footer>Imperium Pecuniae. Private to this browser. Not financial advice.</footer>
 
 <script>
 var $=function(i){return document.getElementById(i)},S,ym=new Date().toISOString().slice(0,7),cl=0;
-function dflt(){return{cur:"EUR",tx:[],as:[],db:[],gl:[],bh:[],wl:[],pl:{},lv:null}}
+function dflt(){return{cur:"EUR",per:"y",me:{},tx:[],as:[],db:[],gl:[],wl:[],ck:{},lv:null}}
 try{S=JSON.parse(localStorage.getItem("ip-fin"))}catch(e){}
-S=Object.assign(dflt(),S||{});
+S=Object.assign(dflt(),S||{});S.me=S.me||{};S.ck=S.ck||{};
+(function(){
+ if(S.bh&&S.bh.length){S.bh.forEach(function(h){S.as.push({i:h.i,n:h.n,t:"Bonds",v:h.p,y:+(h.f*h.c/h.p).toFixed(2)})})}delete S.bh;
+ S.as.forEach(function(a){if(a.t==="Investment")a.t="Stocks"});
+ var p=S.pl;if(p&&!Object.keys(S.me).length){var mp={pI:"Net",pG:"Gross",pT:"Tax",pH:"H",pTr:"Tr",pF:"F",pIn:"In",pO:"O",pGoal:"Goal",pY:"Yrs",pC:"Cmf"};Object.keys(mp).forEach(function(k){var v=parseFloat(p[k]);if(!isNaN(v))S.me[mp[k]]=v})}delete S.pl;
+})();
 function save(){try{localStorage.setItem("ip-fin",JSON.stringify(S))}catch(e){}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function m(v){return v==null||isNaN(v)?"-":new Intl.NumberFormat("en-US",{style:"currency",currency:S.cur,maximumFractionDigits:0}).format(v)}
@@ -192,130 +230,180 @@ function id(){return Date.now()+Math.random().toString(36).slice(2,6)}
 function del(k,i){S[k]=S[k].filter(function(x){return x.i!==i});save();render()}
 function xb(k,i){return'<button class="x" aria-label="Remove" onclick="del(\''+k+'\',\''+i+'\')">×</button>'}
 function put(k,o,ids){S[k].push(Object.assign({i:id()},o));ids.forEach(function(x){$(x).value=""});save();render()}
+function K(l,v,n,e){return'<div class="r'+(e?" e":"")+'"><div class="rl">'+l+'</div><div class="rv">'+v+"</div>"+(n?'<div class="rn">'+n+"</div>":"")+"</div>"}
+var TL={Cash:"Cash or savings",Stocks:"Stocks and ETFs",Bonds:"Bonds",Property:"Property",Other:"Other"};
+function me(){
+ var M=S.me,net=M.Net!=null?M.Net:(M.Gross!=null?M.Gross*(1-(M.Tax||0)/100):null),dp=sum(S.db,"p")*12;
+ var cats=[["Home",M.H||0,35],["Transport",M.Tr||0,12],["Food",M.F||0,15],["Insurance and health",M.In||0,10],["Debt payments",dp,15],["Everything else",M.O||0,10]];
+ var exp=cats.reduce(function(s,c){return s+c[1]},0),by={Cash:0,Stocks:0,Bonds:0,Property:0,Other:0};
+ S.as.forEach(function(a){by[a.t]=(by[a.t]||0)+a.v});
+ var assets=sum(S.as,"v"),debt=sum(S.db,"b");
+ return{net:net,exp:exp,cats:cats,by:by,assets:assets,debt:debt,nw:assets-debt,inv:by.Stocks+by.Bonds,cash:by.Cash,sur:net==null?null:net-exp}
+}
+function fv(P,A,r,y){var q=r/1200,n=y*12;return q?P*Math.pow(1+q,n)+A*((Math.pow(1+q,n)-1)/q):P+A*n}
 function payoff(B,r,P){r=r/1200;if(!(P>0))return null;if(r===0)return{n:B/P,int:0};if(P<=B*r)return null;var n=-Math.log(1-r*B/P)/Math.log(1+r);return{n:n,int:n*P-B}}
-function bondsCost(){return sum(S.bh,"p")}
-function render(){
- $("cur").value=S.cur;
- var mt=S.tx.filter(function(t){return t.d.slice(0,7)===ym}),inn=0,out=0,sv=0,cats={};
- mt.forEach(function(t){if(t.t==="in")inn+=t.a;else if(t.t==="out"){out+=t.a;cats[t.c]=(cats[t.c]||0)+t.a}else sv+=t.a});
- var cash=S.as.filter(function(a){return a.t==="Cash"}).reduce(function(s,a){return s+a.v},0);
- var assets=sum(S.as,"v")+bondsCost(),debt=sum(S.db,"b"),nw=assets-debt,left=inn-out-sv;
- $("ovK").innerHTML=[["Net worth",m(nw),"e"],["Earned",m(inn)],["Spent",m(out)],["Saved",m(sv)],["Left over",'<span class="'+(left<0?"neg":"pos")+'">'+m(left)+"</span>"],["Savings rate",inn>0?(sv/inn*100).toFixed(0)+"%":"-"],["Total debt",m(debt)],["Cash runway",out>0&&cash>0?(cash/out).toFixed(1)+" months":"-"]].map(function(k){return'<div class="r '+(k[2]||"")+'"><div class="rl">'+k[0]+'</div><div class="rv">'+k[1]+"</div></div>"}).join("");
- var ks=Object.keys(cats).sort(function(a,b){return cats[b]-cats[a]});
- $("ovC").innerHTML=ks.length?ks.map(function(k){return'<div class="cat"><span>'+esc(k)+"</span><span>"+m(cats[k])+" · "+(cats[k]/out*100).toFixed(0)+'%</span></div><div class="bar"><i style="width:'+(cats[k]/out*100)+'%"></i></div>'}).join(""):'<div class="empty">Nothing logged for this month yet. Add entries in Cashflow.</div>';
- $("tM").value=ym;
- var L=mt.slice().sort(function(a,b){return a.d<b.d?1:-1});
- $("tL").innerHTML=L.length?L.map(function(t){return'<div class="row"><div class="a">'+esc(t.c||"Uncategorised")+"<small>"+t.d+(t.n?" · "+esc(t.n):"")+'</small></div><div class="v '+(t.t==="in"?"pos":t.t==="out"?"neg":"")+'">'+(t.t==="in"?"+":t.t==="out"?"−":"")+m(t.a)+"</div>"+xb("tx",t.i)+"</div>"}).join(""):'<div class="empty">No entries for this month.</div>';
- $("nwK").innerHTML=[["Net worth",m(nw),"e"],["Assets",m(assets)],["Debts",m(debt)]].map(function(k){return'<div class="r '+(k[2]||"")+'"><div class="rl">'+k[0]+'</div><div class="rv">'+k[1]+"</div></div>"}).join("");
- var AL=S.as.map(function(a){return'<div class="row"><div class="a">'+esc(a.n)+"<small>"+a.t+'</small></div><div class="v">'+m(a.v)+"</div>"+xb("as",a.i)+"</div>"});
- if(S.bh.length)AL.push('<div class="row"><div class="a">Bonds at cost<small>From the Bonds tab</small></div><div class="v">'+m(bondsCost())+"</div></div>");
- $("aL").innerHTML=AL.join("")||'<div class="empty">No assets yet.</div>';
- $("dL").innerHTML=S.db.map(function(d){var p=payoff(d.b,d.r,d.p),s=!d.p?"Add a monthly payment to see a payoff date":p?"Paid off in "+Math.ceil(p.n)+" months, about "+m(p.int)+" interest":"Payment does not cover the interest, so the balance grows";return'<div class="row"><div class="a">'+esc(d.n)+"<small>"+d.r+"% · "+s+'</small></div><div class="v">'+m(d.b)+"</div>"+xb("db",d.i)+"</div>"}).join("")||'<div class="empty">No debts. Add any loan or card balance.</div>';
- var now=new Date(),mn=now.getFullYear()*12+now.getMonth();
- $("gL").innerHTML=S.gl.map(function(g){var pc=Math.min(100,g.s/g.t*100),need="";if(g.d&&g.s<g.t){var p=g.d.split("-"),ml=(+p[0])*12+(+p[1]-1)-mn;need=ml>0?" · needs "+m((g.t-g.s)/ml)+" a month":" · date has passed"}
-  return'<div style="padding:10px 0;border-bottom:1px solid var(--dv)"><div class="row" style="border:0;padding:0"><div class="a">'+esc(g.n)+"<small>"+m(g.s)+" of "+m(g.t)+need+'</small></div><div class="v">'+pc.toFixed(0)+"%</div>"+xb("gl",g.i)+'</div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="add" style="margin:8px 0 0"><input type="number" min="0" step="any" value="'+g.s+'" aria-label="Saved so far" onchange="gs(\''+g.i+'\',this.value)"></div></div>'}).join("")||'<div class="empty">No goals yet.</div>';
- var yr=now.getFullYear();
- $("hL").innerHTML=S.bh.map(function(h){var inc=h.f*h.c/100,ye=h.y-yr;return'<div class="row"><div class="a">'+esc(h.n)+"<small>"+h.c+"% coupon · "+(ye>0?ye+" years left":"matured")+" · current yield "+(inc/h.p*100).toFixed(2)+'%</small></div><div class="v">'+m(inc)+"/yr</div>"+xb("bh",h.i)+"</div>"}).join("")||'<div class="empty">No bonds logged yet.</div>';
- rw();rp();$("hT").innerHTML=S.bh.length?'<div class="note">Yearly coupon income across your bonds: <b>'+m(S.bh.reduce(function(s,h){return s+h.f*h.c/100},0))+"</b> on "+m(bondsCost())+" invested.</div>":"";
- calcB();calcG();
+function mix(y,c){var b=y<3?[0,10]:y<7?[20,40]:y<15?[50,70]:[70,90],lo=Math.max(0,b[0]+c),hi=Math.max(lo,Math.min(100,b[1]+c));return{lo:lo,hi:hi,sp:Math.round((lo+hi)/2)}}
+var MF={mNet:"Net",mGross:"Gross",mH:"H",mTr:"Tr",mF:"F",mIn:"In",mO:"O",mGoal:"Goal"},NF={mTax:"Tax",mYrs:"Yrs",mCmf:"Cmf"};
+function fillNm(){
+ var k=S.per==="m"?12:1;document.querySelectorAll(".pp").forEach(function(e){e.textContent=S.per==="m"?"month":"year"});
+ document.querySelectorAll("#per button").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.per)});
+ Object.keys(MF).forEach(function(i){if(document.activeElement===$(i))return;var v=S.me[MF[i]];$(i).value=v!=null?+(v/k).toFixed(2):""});
+ Object.keys(NF).forEach(function(i){if(document.activeElement===$(i))return;var v=S.me[NF[i]];$(i).value=v!=null?v:(i==="mCmf"?"0":"")});
+}
+function rNm(){
+ fillNm();var E=me();
+ $("nmI").textContent=S.me.Net==null&&S.me.Gross!=null?"Estimated after-tax income: "+m(E.net)+" a year ("+m(E.net/12)+" a month).":"";
+ $("nmS").textContent=E.net>0?"Total spending "+m(E.exp)+" a year ("+m(E.exp/12)+" a month), leaving "+m(E.sur)+" a year ("+m(E.sur/12)+" a month).":"Enter your income and spending to see what is left over each month.";
+ $("aL").innerHTML=S.as.map(function(a){return'<div class="row"><div class="a">'+esc(a.n)+"<small>"+TL[a.t]+(a.y?" · yields "+a.y+"% a year":"")+'</small></div><div class="v">'+m(a.v)+"</div>"+xb("as",a.i)+"</div>"}).join("")||'<div class="empty">Nothing added yet. Include accounts, investments and property.</div>';
+ $("dL").innerHTML=S.db.map(function(d){var p=payoff(d.b,d.r,d.p),s=!d.p?"Add a monthly payment to see a payoff date":p?"Paid off in "+Math.ceil(p.n)+" months, about "+m(p.int)+" interest":"The payment does not cover the interest, so the balance grows";return'<div class="row"><div class="a">'+esc(d.n)+"<small>"+d.r+"% · "+s+'</small></div><div class="v">'+m(d.b)+"</div>"+xb("db",d.i)+"</div>"}).join("")||'<div class="empty">No debts. Add any loan, card or mortgage.</div>';
+}
+function rSt(){
+ var E=me(),mex=E.exp/12,mo=mex>0?E.cash/mex:0,hd=S.db.filter(function(d){return d.r>8}),fit=E.exp>0?25*E.exp:0,fi=fit>0?E.inv/fit:0;
+ var st=[
+ {t:"Know your numbers",d:"Enter your income, spending, savings, investments and debts once in My numbers. Every other page reads from there.",ok:E.net>0&&E.exp>0,go:"nm",gt:"Open My numbers"},
+ {t:"Spend less than you earn",d:"Money left over after spending is the fuel for everything else. Even a small gap is enough to start.",ok:E.sur>0,n:E.net>0?"Left over: "+m(E.sur/12)+" a month, "+m(E.sur)+" a year":"",go:"nm",gt:"Check your spending"},
+ {t:"Build a safety net",d:"Keep 3 to 6 months of spending in an instant-access savings account (Tagesgeld in Germany). It is not an investment. It stops a job loss or a repair bill from becoming debt.",ok:mex>0&&mo>=3,n:mex>0?"You have "+mo.toFixed(1)+" months saved. Aim for 3 to 6.":"",go:"nm",gt:"Add your savings"},
+ {t:"Clear expensive debt",d:"Debt above about 8% interest costs more than investing usually earns, so repaying it is the better deal.",ok:hd.length===0,n:hd.length?"To pay down: "+hd.map(function(d){return esc(d.n)}).join(", "):"No expensive debt listed.",go:"nm",gt:"Review your debts"},
+ {t:"Protect yourself",d:"Health cover and personal liability insurance stop one bad event from wiping you out. Tick it when you have both.",ok:!!S.ck.ins,ck:"ins",cl:"I have health cover and liability insurance"},
+ {t:"Invest every month",d:"Put a fixed amount into one broad, low-cost global stock ETF on a schedule. Hold some bonds if you need the money within about five years.",ok:E.inv>0,n:E.inv>0?"Invested so far: "+m(E.inv):"",go:"pl",gt:"See how much to invest"},
+ {t:"Grow toward independence",d:"Independence means your investments are big enough to pay for your life. A common rule of thumb is 25 times your yearly spending.",ok:fi>=1,n:fit>0?"You are at "+Math.min(100,fi*100).toFixed(0)+"% of "+m(fit):"",go:"pl",gt:"See your timeline"}];
+ var dn=st.filter(function(s){return s.ok}).length,nx=st.findIndex(function(s){return!s.ok}),sc=Math.round(dn/7*100);
+ $("stS").textContent=sc;$("stM").style.width=sc+"%";
+ $("stN").textContent=nx<0?"All seven steps are done. Keep investing and review once a year.":"Your next step: "+st[nx].t+".";
+ $("stK").innerHTML=K("Net worth",m(E.nw),"",1)+K("Left over a month",E.net>0?'<span class="'+(E.sur<0?"neg":"pos")+'">'+m(E.sur/12)+"</span>":"-")+K("Safety net",mex>0?mo.toFixed(1)+" months":"-")+K("Invested",m(E.inv))+K("Independence",fit>0?Math.min(100,fi*100).toFixed(0)+"%":"-");
+ $("stL").innerHTML=st.map(function(s,i){var c=s.ok?"dn":i===nx?"nx":"";return'<div class="step '+c+'"><span class="n">'+(i+1)+'</span><div><div class="h"><b>'+s.t+'</b><span class="tag '+(s.ok?"t-l":i===nx?"t-i":"t-m")+'">'+(s.ok?"Done":i===nx?"Your next step":"Later")+"</span></div><p>"+s.d+"</p>"+(s.n?'<p><b>'+s.n+"</b></p>":"")+(s.ck?'<label><input type="checkbox" data-ck="'+s.ck+'"'+(S.ck[s.ck]?" checked":"")+">"+s.cl+"</label>":"")+(s.go&&!s.ok?'<div class="add" style="margin:8px 0 0"><button class="b g" data-go="'+s.go+'">'+s.gt+"</button></div>":"")+"</div></div>"}).join("");
+}
+function rPl(){
+ var E=me();
+ if(!(E.net>0)){$("pK").innerHTML='<div class="empty">Enter your income and spending in My numbers to see your plan.</div>';["pA","pM","pP","pS"].forEach(function(i){$(i).innerHTML=""});$("pFI").textContent="";$("pPt").textContent="";return}
+ var net=E.net,exp=E.exp,sur=net-exp,rate=sur/net,mo=rate<.1?3:6,tgt=exp/12*mo,gap=Math.max(0,tgt-E.cash),safe=sur>0&&gap>0?Math.min(gap,sur*.7):0,inv=sur>0?sur-safe:0;
+ var goal=S.me.Goal,y=S.me.Yrs!=null?S.me.Yrs:10,c=S.me.Cmf!=null?+S.me.Cmf:0,x=mix(y,c),sp=x.sp,sat=sp>=50?10:sp>=20?5:0,core=sp-sat,bd=100-sp;
+ function two(v){return m(v)+" a year"}
+ var h=K("After-tax income",m(net/12)+" a month",two(net))+K("Spending",m(exp/12)+" a month",two(exp)+" · "+(exp/net*100).toFixed(0)+"% of income")+K("Left over",'<span class="'+(sur<0?"neg":"pos")+'">'+m(sur/12)+" a month</span>",two(sur)+" · "+(rate*100).toFixed(0)+"% savings rate")+K("Investing target",m(inv/12)+" a month",two(inv),1);
+ h+=gap>0?K("Safety net still needed",m(gap),"Target "+m(tgt)+" ("+mo+" months of spending), you hold "+m(E.cash)):K("Safety net","Full","Cash covers "+mo+" months of spending");
+ if(goal!=null)h+=K("Your goal",m(goal/12)+" a month",goal<=inv?"Affordable, with "+m((inv-goal)/12)+" a month to spare":"Short by "+m((goal-inv)/12)+" a month. Trim spending or raise income.");
+ $("pK").innerHTML=h;
+ $("pA").innerHTML=inv>0?K("Core stock ETFs ("+core+"%)",m(inv*core/1200)+" a month",two(inv*core/100)+" into one broad global fund",1)+K("Satellite stocks ("+sat+"%)",m(inv*sat/1200)+" a month",two(inv*sat/100)+" · optional, money you can afford to lose")+K("Bonds and savings ("+bd+"%)",m(inv*bd/1200)+" a month",two(inv*bd/100)+" · stability for a "+y+"-year horizon")+(safe>0?K("Safety net first",m(safe/12)+" a month",two(safe)+" · into instant-access savings before the rest is invested"):""):'<div class="empty">Nothing to invest yet. See the advice below.</div>';
+ var msg=rate<0?"You spend more than you earn. Fix this before investing: look at the highest category in the table below.":rate<.05?"Almost nothing is left over. Build the safety net in instant-access savings and clear any expensive debt first. Investing can wait, or start with a very small monthly ETF plan.":rate<.15?"You have room to start. Finish the safety net, then set up a monthly savings plan into one broad global stock ETF. If you need the money within five years, hold more in bonds and savings.":rate<.3?"A solid position. A global stock ETF as the core, bonds sized by your horizon, and an automatic monthly transfer. Use any yearly tax-free allowance before investing in taxable accounts.":"A strong position. Keep the same core ETF, add bonds for stability, and you can afford a small satellite. At this level compare tax-advantaged accounts and the fees on every fund.";
+ var hd=S.db.filter(function(d){return d.r>8});if(hd.length)msg+=" Debt above 8% interest ("+hd.map(function(d){return esc(d.n)}).join(", ")+") should usually be paid down before investing, because clearing it is a guaranteed return.";
+ $("pM").innerHTML='<p class="sub" style="margin:0">'+msg+"</p>";
+ var yy=y>0?y:10,P=E.inv,A=inv/12;
+ $("pPt").textContent="Your current investments of "+m(P)+" plus "+m(A)+" a month for "+yy+" years. Returns are not promised, so three cases are shown.";
+ $("pP").innerHTML=[4,7,9].map(function(r){var f=fv(P,A,r,yy);return"<tr><td>"+r+"% a year</td><td>"+m(f)+"</td><td>"+m(f-P-A*12*yy)+"</td></tr>"}).join("");
+ var fit=25*exp,b=P,n=0;while(b<fit&&n<720&&A+b>0){b=b*(1+.07/12)+A;n++}
+ $("pFI").textContent=P>=fit?"Your investments already cover 25 times your yearly spending ("+m(fit)+").":A+P<=0?"Start investing to build toward independence: 25 times your yearly spending is "+m(fit)+".":n>=720?"At this pace independence ("+m(fit)+", 25 times yearly spending) is more than 60 years away. Raise the amount invested or lower spending.":"At 7% a year and this monthly amount, you reach "+m(fit)+" (25 times your yearly spending) in about "+Math.ceil(n/12)+" years. This is a rule of thumb, not a promise.";
+ $("pS").innerHTML=E.cats.map(function(c){var p=c[1]/net*100,ok=p<=c[2];return"<tr><td>"+c[0]+"</td><td>"+m(c[1]/12)+"</td><td>"+m(c[1])+"</td><td>"+p.toFixed(0)+"%</td><td>up to "+c[2]+'%</td><td><span class="tag '+(ok?"t-l":"t-h")+'">'+(ok?"In range":"High")+"</span></td></tr>"}).join("");
+}
+function rTk(){
+ var E=me(),mt=S.tx.filter(function(t){return t.d.slice(0,7)===ym}),i=0,o=0,s=0;
+ mt.forEach(function(t){if(t.t==="in")i+=t.a;else if(t.t==="out")o+=t.a;else s+=t.a});
+ var pl=E.exp/12,df=pl-o;
+ $("tK").innerHTML=K("Earned",m(i))+K("Spent",m(o),pl>0?"Plan: "+m(pl):"Set your plan in My numbers")+K("Saved",m(s))+(pl>0?K("Against plan",'<span class="'+(df<0?"neg":"pos")+'">'+m(Math.abs(df))+(df<0?" over":" under")+"</span>","Spending versus your planned month",1):"");
+ $("tM").value=ym;var L=mt.slice().sort(function(a,b){return a.d<b.d?1:-1});
+ $("tL").innerHTML=L.length?L.map(function(t){return'<div class="row"><div class="a">'+esc(t.c||"Uncategorised")+"<small>"+t.d+(t.n?" · "+esc(t.n):"")+'</small></div><div class="v '+(t.t==="in"?"pos":t.t==="out"?"neg":"")+'">'+(t.t==="in"?"+":t.t==="out"?"−":"")+m(t.a)+"</div>"+xb("tx",t.i)+"</div>"}).join(""):'<div class="empty">No entries for this month yet.</div>';
+}
+function rNw(){
+ var E=me(),inc=S.as.reduce(function(s,a){return s+a.v*(a.y||0)/100},0);
+ $("nwK").innerHTML=K("Net worth",m(E.nw),"",1)+K("You own",m(E.assets))+K("You owe",m(E.debt))+K("Yearly income from investments",m(inc),m(inc/12)+" a month, from the yields you entered");
+ $("nwB").innerHTML=E.assets>0?Object.keys(E.by).filter(function(k){return E.by[k]>0}).map(function(k){var p=E.by[k]/E.assets*100;return'<div class="cat"><span>'+TL[k]+"</span><span>"+m(E.by[k])+" · "+p.toFixed(0)+'%</span></div><div class="bar"><i style="width:'+p+'%"></i></div>'}).join(""):'<div class="empty">Nothing yet. Add accounts, investments and property in My numbers.</div>';
+ $("nwD").innerHTML=S.db.map(function(d){var p=payoff(d.b,d.r,d.p);return'<div class="row"><div class="a">'+esc(d.n)+"<small>"+d.r+"% · "+(p?"paid off in about "+Math.ceil(p.n)+" months":d.p?"payment does not cover interest":"no payment set")+'</small></div><div class="v">'+m(d.b)+"</div></div>"}).join("")||'<div class="empty">No debts listed.</div>';
+}
+function rGl(){
+ var now=new Date(),mn=now.getFullYear()*12+now.getMonth(),need=0;
+ $("gL").innerHTML=S.gl.map(function(g){var pc=Math.min(100,g.s/g.t*100),nd="";if(g.d&&g.s<g.t){var p=g.d.split("-"),ml=(+p[0])*12+(+p[1]-1)-mn;if(ml>0){var r=(g.t-g.s)/ml;need+=r;nd=" · save "+m(r)+" a month"}else nd=" · date has passed"}
+  return'<div style="padding:10px 0;border-bottom:1px solid var(--dv)"><div class="row" style="border:0;padding:0"><div class="a">'+esc(g.n)+"<small>"+m(g.s)+" of "+m(g.t)+nd+'</small></div><div class="v">'+pc.toFixed(0)+"%</div>"+xb("gl",g.i)+'</div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="add" style="margin:8px 0 0"><input type="number" min="0" step="any" value="'+g.s+'" aria-label="Saved so far" onchange="gs(\''+g.i+'\',this.value)"></div></div>'}).join("")||'<div class="empty">No goals yet.</div>';
+ var E=me(),cap=E.sur!=null?E.sur/12:null;
+ $("gC").textContent=need>0?"Your dated goals need "+m(need)+" a month."+(cap!=null?(cap>=need?" Your plan leaves "+m(cap)+" a month, so they fit.":" Your plan leaves "+m(Math.max(0,cap))+" a month, which is not enough for all of them."):""):"Add a target month to a goal to see what it needs each month.";
 }
 function gs(i,v){S.gl.forEach(function(g){if(g.i===i)g.s=parseFloat(v)||0});save();render()}
+function rLv(){lvRender();rw()}
+function rw(){$("wL").innerHTML=S.wl.map(function(w){return'<div class="row"><div class="a">'+esc(w.n)+"<small>"+esc(w.t)+(w.x?" · "+esc(w.x):"")+"</small></div>"+xb("wl",w.i)+"</div>"}).join("")||'<div class="empty">Nothing on your watchlist yet.</div>'}
+function render(){$("cur").value=S.cur;rSt();rNm();rPl();rTk();rNw();rGl();rLv();calcB();calcK()}
 function calcB(){
- var F=num("bF"),c=num("bC"),P=num("bP"),N=num("bY"),o=["cY","cI","cCy","cTo","cD","cS"];
- $("cN").style.display="none";
+ var F=num("bF"),c=num("bC"),P=num("bP"),N=num("bY"),o=["cY","cI","cCy","cTo","cD","cS"];$("cN").style.display="none";
  if(F==null||c==null||P==null||N==null||F<=0||P<=0||N<1){o.forEach(function(x){$(x).textContent="-"});return}
  N=Math.round(N);var cp=F*c/100,t,i,lo=-.9,hi=2,y;
  function pv(r){var s=0;for(t=1;t<=N;t++)s+=cp/Math.pow(1+r,t);return s+F/Math.pow(1+r,N)}
  for(i=0;i<80;i++){y=(lo+hi)/2;if(pv(y)>P)lo=y;else hi=y}
- var d=0;for(t=1;t<=N;t++)d+=t*cp/Math.pow(1+y,t);d=(d+N*F/Math.pow(1+y,N))/P;
- var tot=cp*N+F-P;
+ var d=0;for(t=1;t<=N;t++)d+=t*cp/Math.pow(1+y,t);d=(d+N*F/Math.pow(1+y,N))/P;var tot=cp*N+F-P;
  $("cY").textContent=(y*100).toFixed(2)+"%";$("cI").textContent=m(cp);$("cCy").textContent=(cp/P*100).toFixed(2)+"%";
  $("cTo").textContent=(tot<0?"−":"+")+m(Math.abs(tot)).replace("-","");$("cD").textContent=d.toFixed(1)+" years";$("cS").textContent="−"+(d/(1+y)).toFixed(1)+"%";
- $("cN").textContent=P<F?"Bought at a discount: you gain "+m(F-P)+" at maturity on top of coupons, so yield to maturity beats the coupon rate.":P>F?"Bought at a premium: you lose "+m(P-F)+" at maturity, so yield to maturity is below the coupon rate.":"Bought at par: yield to maturity equals the coupon rate.";
- $("cN").style.display="block";
-}
-function calcG(){
- var I=num("gI"),M=num("gM"),R=num("gR")||0,Y=num("gY");
- if(!(Y>0)||(I==null&&M==null)){["rF","rC","rG","r72"].forEach(function(x){$(x).textContent="-"});return}
- I=I||0;M=M||0;var k=Y*12,q=R/1200,fv=q?I*Math.pow(1+q,k)+M*((Math.pow(1+q,k)-1)/q):I+M*k,ct=I+M*k;
- $("rF").textContent=m(fv);$("rC").textContent=m(ct);$("rG").textContent=m(fv-ct);$("r72").textContent=R>0?(72/R).toFixed(1)+" years":"-";
-}
-document.querySelectorAll("nav [data-p]").forEach(function(b){b.addEventListener("click",function(){
- document.querySelectorAll("nav [data-p]").forEach(function(x){x.classList.remove("on")});document.querySelectorAll(".pg").forEach(function(x){x.classList.remove("on")});
- b.classList.add("on");$(b.dataset.p).classList.add("on");scrollTo(0,0)})});
-$("cur").addEventListener("change",function(){S.cur=this.value;save();render()});
-$("tM").addEventListener("change",function(){if(this.value){ym=this.value;render()}});
-$("tB").addEventListener("click",function(){var a=num("tA");if(!(a>0))return;put("tx",{t:$("tT").value,c:$("tC").value.trim(),a:a,d:$("tD").value||new Date().toISOString().slice(0,10),n:$("tN").value.trim()},["tA","tN"]);});
-$("aB").addEventListener("click",function(){var v=num("aV");if(v==null||!$("aN").value.trim())return;put("as",{n:$("aN").value.trim(),t:$("aT").value,v:v},["aN","aV"])});
-$("dBt").addEventListener("click",function(){var b=num("dB");if(b==null||!$("dN").value.trim())return;put("db",{n:$("dN").value.trim(),b:b,r:num("dR")||0,p:num("dP")||0},["dN","dB","dR","dP"])});
-$("gB").addEventListener("click",function(){var t=num("gT");if(!(t>0)||!$("gN").value.trim())return;put("gl",{n:$("gN").value.trim(),t:t,s:num("gS")||0,d:$("gD").value},["gN","gT","gS","gD"])});
-$("hB").addEventListener("click",function(){var f=num("hF"),c=num("hC"),p=num("hP"),y=num("hY");if(!(f>0&&p>0)||c==null||y==null||!$("hN").value.trim())return;put("bh",{n:$("hN").value.trim(),f:f,c:c,p:p,y:y},["hN","hF","hC","hP","hY"])});
-["bF","bC","bP","bY"].forEach(function(i){$(i).addEventListener("input",calcB)});["gI","gM","gR","gY"].forEach(function(i){$(i).addEventListener("input",calcG)});
-$("bEx").addEventListener("click",function(){$("bk").value=JSON.stringify(S);$("bk").select();$("bMsg").textContent="Copy this text and keep it safe."});
-$("bIm").addEventListener("click",function(){try{var o=JSON.parse($("bk").value);S=Object.assign(dflt(),o);save();render();$("bMsg").textContent="Imported."}catch(e){$("bMsg").textContent="That text could not be read."}});
-$("bCl").addEventListener("click",function(){if(!cl){cl=1;this.textContent="Tap again to erase all";return}S=dflt();save();cl=0;this.textContent="Clear everything";render();$("bMsg").textContent="Everything erased."});
-function lab(t){$("tg").textContent=t==="dark"?"Light":"Dark"}
-(function(){var s=null;try{s=localStorage.getItem("ip-theme")}catch(e){}if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s);lab(s||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"))})();
-$("tg").addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"),n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("ip-theme",n)}catch(e){}lab(n)});
-function rw(){$("wL").innerHTML=S.wl.map(function(w){return'<div class="row"><div class="a">'+esc(w.n)+"<small>"+esc(w.t)+(w.x?" · "+esc(w.x):"")+"</small></div>"+xb("wl",w.i)+"</div>"}).join("")||'<div class="empty">Nothing on your watchlist yet.</div>'}
-$("wB").addEventListener("click",function(){if(!$("wN").value.trim())return;put("wl",{n:$("wN").value.trim(),t:$("wT").value,x:$("wX").value.trim()},["wN","wX"])});
-function calcH(){var y=num("lY"),c=+$("lC").value;if(y==null){$("lO").textContent="-";$("lN").textContent="-";return}var b=y<3?[0,10]:y<7?[20,40]:y<15?[50,70]:[70,90],lo=Math.max(0,b[0]+c),hi=Math.max(lo,Math.min(100,b[1]+c));$("lO").textContent="Stocks about "+lo+"–"+hi+"%";$("lN").textContent="Bonds and savings about "+(100-hi)+"–"+(100-lo)+"%"}
+ $("cN").textContent=P<F?"Bought at a discount: you gain "+m(F-P)+" at maturity on top of coupons, so yield to maturity beats the coupon rate.":P>F?"Bought at a premium: you lose "+m(P-F)+" at maturity, so yield to maturity is below the coupon rate.":"Bought at par: yield to maturity equals the coupon rate.";$("cN").style.display="block"}
+function calcK(){var I=num("kI"),M=num("kM"),R=num("kR")||0,Y=num("kY");
+ if(!(Y>0)||(I==null&&M==null)){["kF","kC","kG"].forEach(function(x){$(x).textContent="-"});return}
+ I=I||0;M=M||0;var f=fv(I,M,R,Y),c=I+M*Y*12;$("kF").textContent=m(f);$("kC").textContent=m(c);$("kG").textContent=m(f-c)}
+function calcH(){var y=num("lY"),c=+$("lC").value;if(y==null){$("lO").textContent="-";$("lN").textContent="-";return}var x=mix(y,c);$("lO").textContent="Stocks about "+x.lo+"–"+x.hi+"%";$("lN").textContent="Bonds and savings about "+(100-x.hi)+"–"+(100-x.lo)+"%"}
 function calcT(){var g=num("xG"),a=num("xA"),f=+$("xF").value;if(g==null){$("xT").textContent="-";$("xN").textContent="-";return}var t=Math.max(0,g*(1-f)-(a==null?1000:a))*.26375,e=new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:0});$("xT").textContent=e.format(t);$("xN").textContent=e.format(g-t)}
-["lY","lC"].forEach(function(i){$(i).addEventListener("input",calcH)});["xG","xA","xF"].forEach(function(i){$(i).addEventListener("input",calcT)});
-function pr(all){document.querySelectorAll("details").forEach(function(d){d.open=true});$("pr").textContent="Imperium Pecuniae · My finances · "+new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});document.body.classList.toggle("all",!!all);$("toast").textContent="";try{window.print()}catch(e){$("toast").textContent="Printing is blocked in this view. Open the page in its own browser tab and try again."}}
-addEventListener("afterprint",function(){document.body.classList.remove("all")});
-$("pdf").addEventListener("click",function(){pr(false)});$("pAll").addEventListener("click",function(){pr(true)});$("pOne").addEventListener("click",function(){pr(false)});
-var PL=["pI","pG","pT","pH","pTr","pF","pIn","pD","pO","pGoal","pY","pC"];
-function rp(){PL.forEach(function(i){var e=$(i);if(document.activeElement===e)return;var v=S.pl&&S.pl[i];e.value=v!=null?v:(e.tagName==="SELECT"?"0":"")});calcP();lvRender()}
-PL.forEach(function(i){$(i).addEventListener("input",function(){S.pl=S.pl||{};S.pl[i]=$(i).value;save();calcP()})});
-function calcP(){
- var g=num("pG"),t=num("pT"),n=num("pI"),net=n!=null?n:(g!=null?g*(1-(t||0)/100):null);
- var ex=[["Home",num("pH")||0,35],["Transport",num("pTr")||0,12],["Food",num("pF")||0,15],["Insurance and health",num("pIn")||0,10],["Debt payments",num("pD")||0,15],["Everything else",num("pO")||0,10]],exp=ex.reduce(function(s,x){return s+x[1]},0);
- if(net==null||net<=0){$("pK").innerHTML='<div class="empty">Enter your yearly income to see your plan.</div>';$("pA").innerHTML="";$("pM").innerHTML="";$("pS").innerHTML="";return}
- var sur=net-exp,rate=sur/net,cash=S.as.filter(function(a){return a.t==="Cash"}).reduce(function(s,a){return s+a.v},0);
- var mo=rate<.1?3:6,tgt=exp/12*mo,gap=Math.max(0,tgt-cash),safe=sur>0?(gap>0?Math.min(gap,sur*.7):0):0,inv=sur>0?sur-safe:0;
- var goal=num("pGoal"),y=num("pY"),c=+$("pC").value;if(y==null)y=10;
- var b=y<3?[0,10]:y<7?[20,40]:y<15?[50,70]:[70,90],lo=Math.max(0,b[0]+c),hi=Math.max(lo,Math.min(100,b[1]+c)),sp=Math.round((lo+hi)/2),sat=sp>=50?10:sp>=20?5:0,core=sp-sat,bd=100-sp;
- function k(l,v,n,e){return'<div class="r'+(e?" e":"")+'"><div class="rl">'+l+'</div><div class="rv">'+v+'</div>'+(n?'<div class="rn">'+n+"</div>":"")+"</div>"}
- var K=k("After-tax income",m(net))+k("Expenses",m(exp),(exp/net*100).toFixed(0)+"% of income")+k("Left over",'<span class="'+(sur<0?"neg":"pos")+'">'+m(sur)+"</span>",(rate*100).toFixed(0)+"% savings capacity")+k("Investing target a year",m(inv),m(inv/12)+" a month",1);
- if(gap>0)K+=k("Safety net still needed",m(gap),"Target "+m(tgt)+" ("+mo+" months of spending), cash on hand "+m(cash));else K+=k("Safety net","Full","Cash covers "+mo+" months of spending");
- if(goal!=null)K+=k("Your goal",m(goal),goal<=inv?"Affordable: "+m(inv-goal)+" to spare":"Short by "+m(goal-inv)+" a year. Trim spending or raise income.");
- $("pK").innerHTML=K;
- $("pA").innerHTML=inv>0?k("Core stock ETFs ("+core+"%)",m(inv*core/100),m(inv*core/1200)+" a month into one broad global fund",1)+k("Satellite stocks ("+sat+"%)",m(inv*sat/100),"Optional: single stocks or themes you can afford to lose")+k("Bonds and savings ("+bd+"%)",m(inv*bd/100),"Stability, sized by your "+y+"-year horizon")+(safe>0?k("Safety net first",m(safe),"Goes to instant-access savings before the rest is invested"):""):'<div class="empty">Nothing to invest yet. See the advice below.</div>';
- var msg=rate<0?"You spend more than you earn. Fix this before investing: look at the highest category in the table below.":rate<.05?"Almost nothing is left over. Build the safety net in instant-access savings and clear any expensive debt first. Investing can wait, or start with a very small monthly ETF plan.":rate<.15?"You have room to start. Finish the safety net, then set up a monthly savings plan into one broad global stock ETF. If you need the money within five years, hold more in bonds and savings.":rate<.3?"A solid position. A global stock ETF as the core, bonds sized by your horizon, and an automatic monthly transfer. Use any yearly tax-free allowance before investing in taxable accounts.":"A strong position. Keep the same core ETF, add bonds for stability, and you can afford a small satellite. At this level compare tax-advantaged accounts and the fees on every fund.";
- var hd=S.db.filter(function(d){return d.r>8});if(hd.length)msg+=" Debt above 8% interest ("+hd.map(function(d){return esc(d.n)}).join(", ")+") should usually be paid down before investing, because clearing it is a guaranteed return.";
- $("pM").innerHTML='<p class="sub" style="margin:0">'+msg+"</p>";
- $("pS").innerHTML=ex.map(function(x){var p=x[1]/net*100,ok=p<=x[2];return"<tr><td>"+x[0]+"</td><td>"+m(x[1])+"</td><td>"+p.toFixed(0)+"%</td><td>up to "+x[2]+'%</td><td><span class="tag '+(ok?"t-l":"t-h")+'">'+(ok?"In range":"High")+"</span></td></tr>"}).join("");
-}
-function lvErr(e){var c=e&&e.code;return c==="server_not_connected"?"Add Firecrawl under Settings, Connectors, then try again.":c==="needs_reauth"?"Reconnect Firecrawl under Settings, Connectors.":c==="not_in_manifest"||c==="approval_required"||c==="not_granted"?"Permission was not given. Press Refresh and allow it when asked.":c==="rate_limited"?"Too many requests. Wait a moment and try again.":c==="invalid_json"?"Claude could not format the results. Try again.":c==="capability_disabled"||c==="capability_removed"?"Live refresh is not available in this view. The dated snapshot still applies.":"Could not refresh right now. Try again later."}
-function lk(u){return/^https:\/\//.test(u||"")?'<a href="'+esc(u)+'" target="_blank" rel="noopener">source</a>':"-"}
-function lvRender(){
- var o=$("lvO");if(!S.lv){o.innerHTML='<div class="empty">No live data yet. Press Refresh.</div>';return}
- var d=S.lv.d,old=Date.now()-S.lv.at>864e5,h='<p class="src">Updated '+new Date(S.lv.at).toLocaleString("en-GB")+(old?" (over a day old, refresh before relying on it)":"")+"</p>";
- if(d.stocks.length)h+='<div style="overflow-x:auto"><table class="t"><thead><tr><th>Stock</th><th>Market</th><th>Change</th><th>Period</th><th>As of</th><th></th></tr></thead><tbody>'+d.stocks.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc(s.market)+"</td><td>"+esc(s.change)+"</td><td>"+esc(s.period)+"</td><td>"+esc(s.asOf)+"</td><td>"+lk(s.url)+"</td></tr>"}).join("")+"</tbody></table></div>";
- if(d.bonds.length)h+='<div style="overflow-x:auto;margin-top:10px"><table class="t"><thead><tr><th>Bond</th><th>Yield</th><th>As of</th><th></th></tr></thead><tbody>'+d.bonds.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc(s.yield)+"</td><td>"+esc(s.asOf)+"</td><td>"+lk(s.url)+"</td></tr>"}).join("")+"</tbody></table></div>";
- if(d.note)h+='<p class="src">'+esc(d.note)+"</p>";
+function lvErr(e){var c=e&&e.code;return c==="server_not_connected"?"Add Firecrawl under Settings, Connectors, then try again.":c==="needs_reauth"?"Reconnect Firecrawl under Settings, Connectors.":c==="not_in_manifest"||c==="approval_required"||c==="not_granted"?"Permission was not given. Press Refresh and allow it when asked.":c==="rate_limited"?"Too many requests. Wait a moment and try again.":c==="invalid_json"?"Claude could not format the results. Try again.":c==="capability_disabled"||c==="capability_removed"?"No live feed found. On GitHub, run the Update market data workflow once. Inside Claude, connect Firecrawl. The dated snapshots still apply.":"Could not refresh right now. Try again later."}
+var FD=null;
+async function loadFeed(){
+ try{var r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return false;var d=await r.json();if(!d||!Array.isArray(d.stocks))return false;FD=d;lvRender();return true}catch(e){return false}}
+function pc(v){return v==null?"-":'<span class="'+(v>=0?"pos":"neg")+'">'+(v>=0?"+":"−")+Math.abs(v).toFixed(1)+"%</span>"}
+function fdRender(o){
+ var d=FD,ts=d.updated?Date.parse(d.updated):0;
+ if(!ts){o.innerHTML='<div class="empty">The feed is set up but has no data yet. In GitHub, open Actions, choose Update market data, and press Run workflow.</div>';return}
+ var h='<p class="src">Updated '+new Date(ts).toLocaleString("en-GB")+(Date.now()-ts>2*864e5?" (over two days old, check the update workflow in GitHub)":"")+" · Sources: Yahoo Finance, European Central Bank, Bundesbank"+(d.universe?" · ranked within "+d.universe.stocks+" stocks and "+d.universe.funds+" bond funds":"")+". Returns include dividends and are in each stock’s own currency.</p>";
+ if(d.indices&&d.indices.length)h+=tb(["Index","Year to date","1 month","1 year"],d.indices.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+pc(s.ytd)+"</td><td>"+pc(s.m1)+"</td><td>"+pc(s.y1)+"</td></tr>"}).join(""));
+ h+="<h3 style=\"margin:14px 0 0\">Top performing stocks this year</h3>"+tb(["Stock","Market","Year to date","1 month","1 year"],d.stocks.map(function(s){return"<tr><td>"+esc(s.name)+'<div class="hint">'+esc(s.symbol)+"</div></td><td>"+esc(s.market)+"</td><td>"+pc(s.ytd)+"</td><td>"+pc(s.m1)+"</td><td>"+pc(s.y1)+"</td></tr>"}).join(""));
+ if(d.funds&&d.funds.length)h+="<h3 style=\"margin:14px 0 0\">Top performing bond funds this year</h3>"+tb(["Fund","Year to date","1 month","1 year"],d.funds.map(function(s){return"<tr><td>"+esc(s.name)+'<div class="hint">'+esc(s.symbol)+"</div></td><td>"+pc(s.ytd)+"</td><td>"+pc(s.m1)+"</td><td>"+pc(s.y1)+"</td></tr>"}).join(""));
+ if(d.yields&&d.yields.length)h+="<h3 style=\"margin:14px 0 0\">Government bond yields</h3>"+tb(["Bond","Yield","As of","Source"],d.yields.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+Number(s.value).toFixed(2)+"%</td><td>"+esc(s.asOf)+"</td><td>"+esc(s.source)+"</td></tr>"}).join(""));
+ if(d.errors&&d.errors.length)h+='<p class="src">'+d.errors.length+" items had no data and were skipped.</p>";
  o.innerHTML=h}
+function lk(u){return/^https:\/\//.test(u||"")?'<a href="'+esc(u)+'" target="_blank" rel="noopener">source</a>':"-"}
+function tb(h,rows){return'<div style="overflow-x:auto;margin-top:10px"><table class="t"><thead><tr>'+h.map(function(x){return"<th>"+x+"</th>"}).join("")+"</tr></thead><tbody>"+rows+"</tbody></table></div>"}
+function lvRender(){
+ var o=$("lvO");if(FD){fdRender(o);return}if(!S.lv){o.innerHTML='<div class="empty">No live data yet. Press Refresh.</div>';return}
+ var d=S.lv.d,old=Date.now()-S.lv.at>864e5,h='<p class="src">Updated '+new Date(S.lv.at).toLocaleString("en-GB")+(old?" (over a day old, refresh before relying on it)":"")+"</p>";
+ if(d.stocks.length)h+="<h3 style=\"margin:12px 0 0\">Top performing stocks</h3>"+tb(["Stock","Market","Change","Period","As of",""],d.stocks.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc(s.market)+"</td><td>"+esc(s.change)+"</td><td>"+esc(s.period)+"</td><td>"+esc(s.asOf)+"</td><td>"+lk(s.url)+"</td></tr>"}).join(""));
+ if(d.funds&&d.funds.length)h+="<h3 style=\"margin:12px 0 0\">Top performing bond funds</h3>"+tb(["Fund","Return","Period","As of",""],d.funds.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc(s.change)+"</td><td>"+esc(s.period)+"</td><td>"+esc(s.asOf)+"</td><td>"+lk(s.url)+"</td></tr>"}).join(""));
+ if(d.bonds.length)h+="<h3 style=\"margin:12px 0 0\">Government bond yields</h3>"+tb(["Bond","Yield","As of",""],d.bonds.map(function(s){return"<tr><td>"+esc(s.name)+"</td><td>"+esc(s.yield)+"</td><td>"+esc(s.asOf)+"</td><td>"+lk(s.url)+"</td></tr>"}).join(""));
+ if(d.note)h+='<p class="src">'+esc(d.note)+"</p>";o.innerHTML=h}
 async function lvGo(){
- var b=$("lvB"),st=$("lvS");b.disabled=true;st.textContent="Searching the web...";
+ var b=$("lvB"),st=$("lvS");b.disabled=true;st.textContent="Checking for new data...";
+ if(await loadFeed()){b.disabled=false;st.textContent="";return}
+ st.textContent="Searching the web...";
  try{
   if(typeof claude==="undefined")throw{code:"capability_disabled"};
   var mcp=await claude.use("mcp"),sm=await claude.use("sample");if(!mcp||!sm)throw{code:"capability_disabled"};
-  var Q=["best performing stocks 2026 year to date Europe Germany DAX top gainers","best performing US stocks 2026 year to date S&P 500 top gainers","German 10-year Bund yield today"],fe=null;
+  var Q=["best performing stocks 2026 year to date Europe Germany DAX top gainers","best performing US stocks 2026 year to date S&P 500 top gainers","best performing bond ETFs bond funds 2026 year to date","German 10-year Bund yield today"],fe=null;
   var rs=await Promise.all(Q.map(function(q){return mcp.callTool("Firecrawl","firecrawl_search",{objective:"Find current market performance data for a personal investment research page",query:q,limit:5,sources:["web"],domainTools:false}).then(function(r){var p=r.payload;return p&&p.data&&p.data.web||[]}).catch(function(e){fe=fe||e;return[]})}));
   var txt="";rs.forEach(function(a,i){txt+="\n## Search: "+Q[i]+"\n";a.forEach(function(x){txt+="- "+String(x.title||"").slice(0,200)+" | "+x.url+" | "+String(x.description||"").slice(0,700)+"\n"})});
   if(txt.indexOf("- ")<0)throw fe||{code:"upstream_error"};
   st.textContent="Reading the results...";
-  var out=await sm.json("You extract market data from web search results. Use ONLY facts that appear in the text below. Never estimate, correct or add numbers from memory. Reply with only JSON: {\"stocks\":[{\"name\":string,\"market\":string,\"change\":string,\"period\":string,\"asOf\":string,\"url\":string}],\"bonds\":[{\"name\":string,\"yield\":string,\"asOf\":string,\"url\":string}],\"note\":string}. stocks: individual stocks the results name as top performers, at most 8, with the percentage change exactly as written and the period it covers. bonds: government bond yields, at most 4. asOf: the date stated in the text, else \"date not stated\". url: the https link of the result the figure came from. If sources disagree, list both. If nothing usable, return empty arrays and explain in note.\n"+txt.slice(0,20000),{modelTier:"default"});
-  function cl(a,f){return(Array.isArray(a)?a:[]).slice(0,8).map(function(x){var r={};f.forEach(function(k){r[k]=String(x&&x[k]||"").slice(0,160)});return r})}
-  S.lv={at:Date.now(),d:{stocks:cl(out&&out.stocks,["name","market","change","period","asOf","url"]),bonds:cl(out&&out.bonds,["name","yield","asOf","url"]),note:String(out&&out.note||"").slice(0,400)}};
-  save();lvRender();st.textContent="";
+  var out=await sm.json("You extract market data from web search results. Use ONLY facts that appear in the text below. Never estimate, correct or add numbers from memory. Reply with only JSON: {\"stocks\":[{\"name\":string,\"market\":string,\"change\":string,\"period\":string,\"asOf\":string,\"url\":string}],\"funds\":[{\"name\":string,\"change\":string,\"period\":string,\"asOf\":string,\"url\":string}],\"bonds\":[{\"name\":string,\"yield\":string,\"asOf\":string,\"url\":string}],\"note\":string}. stocks: individual stocks the results name as top performers, at most 8, with the percentage change exactly as written and the period it covers. funds: bond funds or bond ETFs the results name as top performers, at most 6, with the return exactly as written. bonds: government bond yields, at most 4. asOf: the date stated in the text, else \"date not stated\". url: the https link of the result the figure came from. If sources disagree, list both. If nothing usable, return empty arrays and explain in note.\n"+txt.slice(0,24000),{modelTier:"default"});
+  function cc(a,f){return(Array.isArray(a)?a:[]).slice(0,8).map(function(x){var r={};f.forEach(function(k){r[k]=String(x&&x[k]||"").slice(0,160)});return r})}
+  S.lv={at:Date.now(),d:{stocks:cc(out&&out.stocks,["name","market","change","period","asOf","url"]),funds:cc(out&&out.funds,["name","change","period","asOf","url"]),bonds:cc(out&&out.bonds,["name","yield","asOf","url"]),note:String(out&&out.note||"").slice(0,400)}};
+  save();lvRender();st.textContent=""
  }catch(e){st.textContent=lvErr(e)}
  b.disabled=false}
+function pr(all){document.querySelectorAll("details").forEach(function(d){d.open=true});$("pr").textContent="Imperium Pecuniae · My finances · "+new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});document.body.classList.toggle("all",!!all);$("toast").textContent="";try{window.print()}catch(e){$("toast").textContent="Printing is blocked in this view. Open the page in its own browser tab and try again."}}
+function go(p){document.querySelectorAll("nav [data-p]").forEach(function(x){x.classList.toggle("on",x.dataset.p===p)});document.querySelectorAll(".pg").forEach(function(x){x.classList.toggle("on",x.id===p)});scrollTo(0,0)}
+document.querySelectorAll("nav [data-p]").forEach(function(b){b.addEventListener("click",function(){go(b.dataset.p)})});
+document.addEventListener("click",function(e){var g=e.target.closest&&e.target.closest("[data-go]");if(g)go(g.dataset.go)});
+document.addEventListener("change",function(e){var c=e.target.dataset&&e.target.dataset.ck;if(c){S.ck[c]=e.target.checked;save();render()}});
+$("cur").addEventListener("change",function(){S.cur=this.value;save();render()});
+document.querySelectorAll("#per button").forEach(function(b){b.addEventListener("click",function(){S.per=b.dataset.v;save();render()})});
+Object.keys(MF).forEach(function(i){$(i).addEventListener("input",function(){var v=parseFloat(this.value),k=S.per==="m"?12:1;if(isNaN(v))delete S.me[MF[i]];else S.me[MF[i]]=v*k;save();rSt();rNm();rPl();rTk();rNw();rGl()})});
+Object.keys(NF).forEach(function(i){$(i).addEventListener("input",function(){var v=parseFloat(this.value);if(isNaN(v))delete S.me[NF[i]];else S.me[NF[i]]=v;save();rSt();rNm();rPl()})});
+$("tM").addEventListener("change",function(){if(this.value){ym=this.value;rTk()}});
+$("tB").addEventListener("click",function(){var a=num("tA");if(!(a>0))return;put("tx",{t:$("tT").value,c:$("tC").value.trim(),a:a,d:$("tD").value||new Date().toISOString().slice(0,10),n:$("tN").value.trim()},["tA","tN"])});
+$("aB").addEventListener("click",function(){var v=num("aV");if(v==null||!$("aN").value.trim())return;put("as",{n:$("aN").value.trim(),t:$("aT").value,v:v,y:num("aY")||0},["aN","aV","aY"])});
+$("dBt").addEventListener("click",function(){var b=num("dB");if(b==null||!$("dN").value.trim())return;put("db",{n:$("dN").value.trim(),b:b,r:num("dR")||0,p:num("dP")||0},["dN","dB","dR","dP"])});
+$("gB").addEventListener("click",function(){var t=num("gT");if(!(t>0)||!$("gN").value.trim())return;put("gl",{n:$("gN").value.trim(),t:t,s:num("gS")||0,d:$("gD").value},["gN","gT","gS","gD"])});
+$("wB").addEventListener("click",function(){if(!$("wN").value.trim())return;put("wl",{n:$("wN").value.trim(),t:$("wT").value,x:$("wX").value.trim()},["wN","wX"])});
+["bF","bC","bP","bY"].forEach(function(i){$(i).addEventListener("input",calcB)});["kI","kM","kR","kY"].forEach(function(i){$(i).addEventListener("input",calcK)});
+["lY","lC"].forEach(function(i){$(i).addEventListener("input",calcH)});["xG","xA","xF"].forEach(function(i){$(i).addEventListener("input",calcT)});
 $("lvB").addEventListener("click",lvGo);
-calcH();calcT();
+$("bEx").addEventListener("click",function(){$("bk").value=JSON.stringify(S);$("bk").select();$("bMsg").textContent="Copy this text and keep it safe."});
+$("bIm").addEventListener("click",function(){try{var o=JSON.parse($("bk").value);S=Object.assign(dflt(),o);S.me=S.me||{};S.ck=S.ck||{};save();render();$("bMsg").textContent="Imported."}catch(e){$("bMsg").textContent="That text could not be read."}});
+$("bCl").addEventListener("click",function(){if(!cl){cl=1;this.textContent="Tap again to erase all";return}S=dflt();save();cl=0;this.textContent="Clear everything";render();$("bMsg").textContent="Everything erased."});
+$("pdf").addEventListener("click",function(){pr(false)});$("pAll").addEventListener("click",function(){pr(true)});
+addEventListener("afterprint",function(){document.body.classList.remove("all")});
+function lab(t){$("tg").textContent=t==="dark"?"Light":"Dark"}
+(function(){var s=null;try{s=localStorage.getItem("ip-theme")}catch(e){}if(s==="light"||s==="dark")document.documentElement.setAttribute("data-theme",s);lab(s||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"))})();
+$("tg").addEventListener("click",function(){var c=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"),n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("ip-theme",n)}catch(e){}lab(n)});
 $("tD").value=new Date().toISOString().slice(0,10);
-render();
+calcH();calcT();render();loadFeed();
 </script>
 </body>
 </html>

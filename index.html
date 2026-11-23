@@ -13,7 +13,7 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-.w{max-width:960px;margin:0 auto;padding:0 18px}
+.w{width:100%;max-width:none;margin:0;padding-left:max(clamp(16px,3vw,56px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,3vw,56px),env(safe-area-inset-right,0px))}
 nav{position:sticky;top:0;z-index:9;background:var(--sf);border-bottom:1px solid var(--dv)}
 nav .w{display:flex;align-items:center;gap:4px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
 .br{font:700 15px var(--serif);letter-spacing:.05em;margin-right:10px;white-space:nowrap}
@@ -62,6 +62,20 @@ table.t{width:100%;border-collapse:collapse;font-size:14px}table.t th,table.t td
 .trust{border-left:4px solid var(--ac);background:var(--acs);border-radius:0 12px 12px 0;padding:12px 16px;font-size:13.5px;margin-bottom:14px}
 .gd{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;align-items:start}
 .ic{background:var(--sf2);border-radius:14px;padding:18px 20px}.ic h3{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.ic p{font-size:14px;color:var(--mu);margin:8px 0 0}.ic p b{color:var(--tx)}.ic .y{font-size:12.5px;font-weight:600;color:var(--ac)}
+header.top{background:var(--sf)}
+.lr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:12px;font:700 clamp(19px,2.6vw,26px)/1 var(--serif);letter-spacing:.16em;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:6px}
+.cur{font:600 14px var(--sans);padding:7px 10px;border-radius:99px;background:var(--sf2);border:1px solid var(--dv);cursor:pointer}
+nav.menu{position:sticky;top:0;z-index:9;background:var(--sf2);border-top:1px solid var(--dv);border-bottom:1px solid var(--dv)}
+nav.menu .w{display:flex;align-items:stretch;gap:2px;overflow-x:auto;padding-top:0;padding-bottom:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.menu .w::-webkit-scrollbar{display:none}
+nav.menu button{border-radius:0;padding:13px 15px;font-size:14px;border-bottom:3px solid transparent}
+nav.menu button.on{background:none;color:var(--ac);border-bottom-color:var(--ac)}
+@media screen and (min-width:1100px){.pg.on{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}.pg.on>h1,.pg.on>.sub,.pg.on>.rg,.pg.on>.note,.pg.on>.trust,.pg.on>.add,.pg.on>.gd{grid-column:1/-1}.pg.on>.cd:has(table){grid-column:1/-1}.pg.on>.cd:has(.gd){grid-column:1/-1}.pg.on>.cd{margin-bottom:0}}
+@media screen and (min-width:1650px){.pg.on{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.lr{flex-direction:column;align-items:flex-start;gap:10px;padding-top:12px;padding-bottom:10px}.logo{letter-spacing:.1em}.tools{width:100%}.b,input,select,textarea,.tg{min-height:42px}.cur{padding:9px 12px}nav.menu button{padding:13px 12px}h1{margin-top:22px}.cd{padding:16px}.score{font-size:46px}}
+@media print{header.top{display:none!important}}
 a{color:var(--ac)}
 footer{text-align:center;color:var(--mu);font-size:12.5px;padding:10px 0 40px}
 @media print{nav,.add,.x,.b,textarea,#toast,.noprint,footer,.seg{display:none!important}body{background:#fff;color:#000}.pg{display:none}.pg.on,body.all .pg{display:block}.pr{display:block}.cd,.r,.ic,.lay,.step,details,.trust{box-shadow:none;background:#fff!important;border:1px solid #ccc;break-inside:avoid;outline:0}.row,.lay{break-inside:avoid}}
@@ -69,11 +83,12 @@ footer{text-align:center;color:var(--mu);font-size:12.5px;padding:10px 0 40px}
 </style>
 </head>
 <body>
-<nav aria-label="Sections"><div class="w">
-<span class="br">IMPERIUM PECUNIAE</span>
+<header class="top"><div class="w lr"><span class="logo"><svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b5cad"/><path d="M20 68L38 46 54 58 80 28" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>IMPERIUM PECUNIAE</span><div class="tools"><select id="cur" class="cur" aria-label="Currency"><option value="EUR">€ EUR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="NGN">₦ NGN</option></select><button class="tg" id="pdf" type="button">Save PDF</button><button class="tg" id="tg" type="button">Theme</button></div></div></header>
+<nav class="menu" aria-label="Sections"><div class="w">
+
 <button data-p="st" class="on">Start</button><button data-p="nm">My numbers</button><button data-p="pl">Plan</button><button data-p="tk">Track</button><button data-p="nw">Net worth</button><button data-p="gl">Goals</button><button data-p="ln">Learn</button><button data-p="bd">Bonds</button><button data-p="rs">Research</button><button data-p="de">Germany</button>
-<select id="cur" class="sp" aria-label="Currency"><option>EUR</option><option>USD</option><option>GBP</option><option>NGN</option></select>
-<button class="tg" id="pdf" type="button">Save PDF</button><button class="tg" id="tg" type="button">Theme</button>
+
+
 </div></nav>
 <main class="w"><div class="pr" id="pr"></div>
 

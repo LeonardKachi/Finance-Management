@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T01:27:43Z",
+ "updated": "2026-11-25T04:29:14Z",
  "stocks": [
   {
    "symbol": "SOI.PA",
@@ -11,31 +11,22 @@
    "asOf": "2026-11-23"
   },
   {
-   "symbol": "ATS.VI",
-   "name": "AT&S",
-   "market": "Austria",
-   "ytd": 242.24,
-   "m1": -20.72,
-   "y1": 290.09,
-   "asOf": "2026-11-23"
-  },
-  {
    "symbol": "MU",
    "name": "Micron",
    "market": "US",
-   "ytd": 148.14,
-   "m1": -21.69,
-   "y1": 215.55,
-   "asOf": "2026-11-23"
+   "ytd": 120.82,
+   "m1": -30.31,
+   "y1": 180.81,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "AMD",
    "name": "AMD",
    "market": "US",
-   "ytd": 111.74,
-   "m1": -14.65,
-   "y1": 119.99,
-   "asOf": "2026-11-23"
+   "ytd": 92.97,
+   "m1": -22.21,
+   "y1": 100.49,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "AIXA.DE",
@@ -90,6 +81,15 @@
    "m1": 3.25,
    "y1": 50.93,
    "asOf": "2026-11-23"
+  },
+  {
+   "symbol": "ASML.AS",
+   "name": "ASML",
+   "market": "Netherlands",
+   "ytd": 38.92,
+   "m1": -11.03,
+   "y1": 48.78,
+   "asOf": "2026-11-23"
   }
  ],
  "funds": [
@@ -100,34 +100,16 @@
    "ytd": 1.45,
    "m1": 0.42,
    "y1": 1.74,
-   "asOf": "2026-11-23"
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "BNDX",
    "name": "Vanguard Total International Bond ETF",
    "market": "US",
-   "ytd": 0.68,
-   "m1": 0.83,
-   "y1": 0.16,
-   "asOf": "2026-11-23"
-  },
-  {
-   "symbol": "HYG",
-   "name": "iShares High Yield Corporate Bond ETF",
-   "market": "US",
-   "ytd": -0.28,
-   "m1": -0.36,
-   "y1": 0.36,
-   "asOf": "2026-11-23"
-  },
-  {
-   "symbol": "AGG",
-   "name": "iShares Core US Aggregate Bond ETF",
-   "market": "US",
-   "ytd": -0.33,
-   "m1": 0.55,
-   "y1": -0.59,
-   "asOf": "2026-11-23"
+   "ytd": 0.7,
+   "m1": 0.85,
+   "y1": 0.18,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "BND",
@@ -136,16 +118,34 @@
    "ytd": -0.34,
    "m1": 0.49,
    "y1": -0.69,
-   "asOf": "2026-11-23"
+   "asOf": "2026-11-24"
+  },
+  {
+   "symbol": "AGG",
+   "name": "iShares Core US Aggregate Bond ETF",
+   "market": "US",
+   "ytd": -0.39,
+   "m1": 0.49,
+   "y1": -0.65,
+   "asOf": "2026-11-24"
+  },
+  {
+   "symbol": "HYG",
+   "name": "iShares High Yield Corporate Bond ETF",
+   "market": "US",
+   "ytd": -0.39,
+   "m1": -0.48,
+   "y1": 0.25,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "TIP",
    "name": "iShares TIPS Bond ETF",
    "market": "US",
-   "ytd": -0.51,
-   "m1": -0.55,
-   "y1": -1.14,
-   "asOf": "2026-11-23"
+   "ytd": -0.63,
+   "m1": -0.66,
+   "y1": -1.25,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "IEF",
@@ -154,15 +154,15 @@
    "ytd": -1.48,
    "m1": 0.91,
    "y1": -2.32,
-   "asOf": "2026-11-23"
+   "asOf": "2026-11-24"
   },
   {
-   "symbol": "EMB",
-   "name": "iShares JPM USD Emerging Markets Bond ETF",
-   "market": "US",
-   "ytd": -1.56,
-   "m1": -0.44,
-   "y1": -1.11,
+   "symbol": "EUNH.DE",
+   "name": "iShares Core Euro Government Bond UCITS ETF",
+   "market": "Germany",
+   "ytd": -1.65,
+   "m1": 0.93,
+   "y1": -2.15,
    "asOf": "2026-11-23"
   }
  ],
@@ -180,19 +180,19 @@
    "symbol": "^STOXX50E",
    "name": "Euro Stoxx 50",
    "market": "Index",
-   "ytd": 4.8,
-   "m1": -0.68,
-   "y1": 8.98,
-   "asOf": "2026-11-23"
+   "ytd": 3.58,
+   "m1": -1.84,
+   "y1": 7.71,
+   "asOf": "2026-11-24"
   },
   {
    "symbol": "^GDAXI",
    "name": "DAX",
    "market": "Index",
-   "ytd": 3.46,
-   "m1": -0.29,
-   "y1": 7.98,
-   "asOf": "2026-11-23"
+   "ytd": 2.15,
+   "m1": -1.55,
+   "y1": 6.62,
+   "asOf": "2026-11-24"
   }
  ],
  "yields": [
@@ -232,7 +232,7 @@
   "funds": 11
  },
  "errors": [
-  "LLY",
+  "ATS.VI",
   "Bundesbank: HTTP Error 404: Not Found"
  ]
 }

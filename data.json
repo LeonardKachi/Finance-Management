@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T01:01:53Z",
+ "updated": "2026-11-27T03:43:43Z",
  "stocks": [
   {
    "symbol": "SOI.PA",
@@ -180,19 +180,19 @@
    "symbol": "^STOXX50E",
    "name": "Euro Stoxx 50",
    "market": "Index",
-   "ytd": 1.69,
-   "m1": -4.43,
-   "y1": 4.27,
-   "asOf": "2026-11-25"
+   "ytd": 3.77,
+   "m1": -2.48,
+   "y1": 6.4,
+   "asOf": "2026-11-26"
   },
   {
    "symbol": "^GDAXI",
    "name": "DAX",
    "market": "Index",
-   "ytd": 0.86,
-   "m1": -3.9,
-   "y1": 3.93,
-   "asOf": "2026-11-25"
+   "ytd": 2.96,
+   "m1": -1.9,
+   "y1": 6.09,
+   "asOf": "2026-11-26"
   }
  ],
  "yields": [

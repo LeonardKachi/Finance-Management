@@ -1,30 +1,30 @@
 {
- "updated": "2026-11-26T03:42:39Z",
+ "updated": "2026-11-27T01:01:53Z",
  "stocks": [
   {
    "symbol": "SOI.PA",
    "name": "Soitec",
    "market": "France",
-   "ytd": 294.05,
-   "m1": -25.07,
-   "y1": 245.35,
-   "asOf": "2026-11-24"
+   "ytd": 266.8,
+   "m1": -30.9,
+   "y1": 208.75,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "ATS.VI",
    "name": "AT&S",
    "market": "Austria",
-   "ytd": 200.0,
-   "m1": -37.68,
-   "y1": 211.11,
-   "asOf": "2026-11-24"
+   "ytd": 177.02,
+   "m1": -42.45,
+   "y1": 177.02,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "MU",
    "name": "Micron",
    "market": "US",
    "ytd": 110.82,
-   "m1": -35.26,
+   "m1": -38.85,
    "y1": 161.41,
    "asOf": "2026-11-25"
   },
@@ -33,7 +33,7 @@
    "name": "AMD",
    "market": "US",
    "ytd": 89.59,
-   "m1": -27.53,
+   "m1": -29.81,
    "y1": 89.52,
    "asOf": "2026-11-25"
   },
@@ -41,53 +41,53 @@
    "symbol": "SPM.MI",
    "name": "Saipem",
    "market": "Italy",
-   "ytd": 84.73,
-   "m1": -4.79,
-   "y1": 90.3,
-   "asOf": "2026-11-24"
+   "ytd": 82.76,
+   "m1": -6.17,
+   "y1": 89.15,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "AIXA.DE",
    "name": "Aixtron",
    "market": "Germany",
-   "ytd": 55.38,
-   "m1": -11.95,
-   "y1": 51.53,
-   "asOf": "2026-11-24"
-  },
-  {
-   "symbol": "TPRO.MI",
-   "name": "Technoprobe",
-   "market": "Italy",
-   "ytd": 47.54,
-   "m1": -30.34,
-   "y1": 45.75,
-   "asOf": "2026-11-24"
+   "ytd": 47.84,
+   "m1": -18.94,
+   "y1": 42.02,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "DB1.DE",
    "name": "Deutsche Boerse",
    "market": "Germany",
-   "ytd": 43.9,
-   "m1": 1.18,
-   "y1": 45.33,
-   "asOf": "2026-11-24"
+   "ytd": 42.22,
+   "m1": -0.22,
+   "y1": 41.09,
+   "asOf": "2026-11-25"
+  },
+  {
+   "symbol": "TPRO.MI",
+   "name": "Technoprobe",
+   "market": "Italy",
+   "ytd": 40.66,
+   "m1": -34.7,
+   "y1": 40.31,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "BAYN.DE",
    "name": "Bayer",
    "market": "Germany",
-   "ytd": 41.01,
-   "m1": 12.76,
-   "y1": 71.9,
-   "asOf": "2026-11-24"
+   "ytd": 37.33,
+   "m1": 10.1,
+   "y1": 65.99,
+   "asOf": "2026-11-25"
   },
   {
    "symbol": "AAPL",
    "name": "Apple",
    "market": "US",
    "ytd": 31.25,
-   "m1": 2.52,
+   "m1": 3.5,
    "y1": 28.56,
    "asOf": "2026-11-25"
   }
@@ -98,7 +98,7 @@
    "name": "iShares 1-3 Year Treasury Bond ETF",
    "market": "US",
    "ytd": 1.54,
-   "m1": 0.55,
+   "m1": 0.52,
    "y1": 1.84,
    "asOf": "2026-11-25"
   },
@@ -107,7 +107,7 @@
    "name": "Vanguard Total International Bond ETF",
    "market": "US",
    "ytd": 0.87,
-   "m1": 0.91,
+   "m1": 0.93,
    "y1": 0.31,
    "asOf": "2026-11-25"
   },
@@ -116,7 +116,7 @@
    "name": "Vanguard Total Bond Market ETF",
    "market": "US",
    "ytd": -0.0,
-   "m1": 0.77,
+   "m1": 0.94,
    "y1": -0.46,
    "asOf": "2026-11-25"
   },
@@ -125,7 +125,7 @@
    "name": "iShares Core US Aggregate Bond ETF",
    "market": "US",
    "ytd": -0.01,
-   "m1": 0.84,
+   "m1": 1.05,
    "y1": -0.42,
    "asOf": "2026-11-25"
   },
@@ -134,7 +134,7 @@
    "name": "iShares TIPS Bond ETF",
    "market": "US",
    "ytd": -0.26,
-   "m1": -0.29,
+   "m1": -0.24,
    "y1": -1.1,
    "asOf": "2026-11-25"
   },
@@ -143,7 +143,7 @@
    "name": "iShares High Yield Corporate Bond ETF",
    "market": "US",
    "ytd": -0.28,
-   "m1": -0.88,
+   "m1": -0.87,
    "y1": 0.27,
    "asOf": "2026-11-25"
   },
@@ -152,17 +152,17 @@
    "name": "iShares 7-10 Year Treasury Bond ETF",
    "market": "US",
    "ytd": -1.03,
-   "m1": 1.4,
+   "m1": 1.68,
    "y1": -1.95,
    "asOf": "2026-11-25"
   },
   {
-   "symbol": "EMB",
-   "name": "iShares JPM USD Emerging Markets Bond ETF",
-   "market": "US",
-   "ytd": -1.52,
-   "m1": -0.86,
-   "y1": -1.18,
+   "symbol": "EUNH.DE",
+   "name": "iShares Core Euro Government Bond UCITS ETF",
+   "market": "Germany",
+   "ytd": -1.44,
+   "m1": 1.23,
+   "y1": -1.93,
    "asOf": "2026-11-25"
   }
  ],
@@ -172,7 +172,7 @@
    "name": "S&P 500",
    "market": "Index",
    "ytd": 4.93,
-   "m1": -6.99,
+   "m1": -7.25,
    "y1": 5.43,
    "asOf": "2026-11-25"
   },
@@ -181,8 +181,8 @@
    "name": "Euro Stoxx 50",
    "market": "Index",
    "ytd": 1.69,
-   "m1": -4.38,
-   "y1": 4.22,
+   "m1": -4.43,
+   "y1": 4.27,
    "asOf": "2026-11-25"
   },
   {
@@ -190,34 +190,34 @@
    "name": "DAX",
    "market": "Index",
    "ytd": 0.86,
-   "m1": -3.47,
-   "y1": 4.11,
+   "m1": -3.9,
+   "y1": 3.93,
    "asOf": "2026-11-25"
   }
  ],
  "yields": [
   {
    "name": "Euro area government bonds, 2-year (AAA issuers)",
-   "value": 3.0167781426,
-   "asOf": "2026-11-24",
+   "value": 2.9686993028,
+   "asOf": "2026-11-25",
    "source": "European Central Bank"
   },
   {
    "name": "Euro area government bonds, 5-year (AAA issuers)",
-   "value": 3.0585523434,
-   "asOf": "2026-11-24",
+   "value": 2.9925799666,
+   "asOf": "2026-11-25",
    "source": "European Central Bank"
   },
   {
    "name": "Euro area government bonds, 10-year (AAA issuers)",
-   "value": 3.3120809567,
-   "asOf": "2026-11-24",
+   "value": 3.2591807487,
+   "asOf": "2026-11-25",
    "source": "European Central Bank"
   },
   {
    "name": "Euro area government bonds, 30-year (AAA issuers)",
-   "value": 3.602527123,
-   "asOf": "2026-11-24",
+   "value": 3.5764528468,
+   "asOf": "2026-11-25",
    "source": "European Central Bank"
   },
   {

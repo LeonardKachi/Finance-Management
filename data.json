@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T00:33:29Z",
+ "updated": "2026-11-28T03:27:18Z",
  "stocks": [
   {
    "symbol": "SOI.PA",
@@ -180,19 +180,19 @@
    "symbol": "^STOXX50E",
    "name": "Euro Stoxx 50",
    "market": "Index",
-   "ytd": 3.77,
-   "m1": -3.1,
-   "y1": 6.11,
-   "asOf": "2026-11-26"
+   "ytd": 5.05,
+   "m1": -1.9,
+   "y1": 7.43,
+   "asOf": "2026-11-27"
   },
   {
    "symbol": "^GDAXI",
    "name": "DAX",
    "market": "Index",
-   "ytd": 2.96,
-   "m1": -3.17,
-   "y1": 5.78,
-   "asOf": "2026-11-26"
+   "ytd": 3.88,
+   "m1": -2.3,
+   "y1": 6.73,
+   "asOf": "2026-11-27"
   }
  ],
  "yields": [
@@ -228,11 +228,10 @@
   }
  ],
  "universe": {
-  "stocks": 63,
+  "stocks": 64,
   "funds": 11
  },
  "errors": [
-  "FRE.DE",
   "Bundesbank: HTTP Error 404: Not Found"
  ]
 }
